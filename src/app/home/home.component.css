@@ -63,22 +63,6 @@
     width: 100% !important;
 }
 
-/* :host ::ng-deep .mat-drawer-container{
-    display: flex !important;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between !important;
-    background-color:  #f5f4f4 !important;
-} */
-
-/* 
-.filter {
-    width: 70%;
-}
-
-.seacrh-btn{
-width: 30%;
-} */
 
 .items {
     margin-left: 1%;

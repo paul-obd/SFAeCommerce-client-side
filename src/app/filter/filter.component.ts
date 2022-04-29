@@ -95,7 +95,7 @@ export class FilterComponent implements OnInit {
 
 
   onAttrValueSelect() {
-    //console.log("nnn")
+
     this.loadingService.loadSpinner == true
     this.itemsService.filterScrollerTimes = 1
 
@@ -107,7 +107,7 @@ export class FilterComponent implements OnInit {
           this.itemsService.items = res
           this.itemsService.filterScrollerTimes = 2
           this.loadingService.loadSpinner = false
-         // console.log("nlaabet 2")
+         
 
         }
       )
@@ -119,7 +119,7 @@ export class FilterComponent implements OnInit {
           this.itemsService.items = res
           this.itemsService.filterScrollerTimes = 2;
           this.loadingService.loadSpinner = false
-         // console.log("only")
+       
         }
       )
     }

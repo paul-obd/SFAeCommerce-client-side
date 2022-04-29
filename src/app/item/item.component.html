@@ -1,5 +1,4 @@
 <div class="contain">
-    <!-- [ngClass]="{'disable': quantity <= 0 }" -->
     <mat-card class="card">
 
         <div *ngIf="imageIsLoaded == false" class="load-image">
@@ -16,28 +15,27 @@
         <img (load)="onImageLoad()" mat-card-image [src]="basePath+'/'+folderPath+'/'+physicalFileName" loading="lazy"
             alt="Photo of an item">
 
-        <!-- <mat-chip-list><mat-chip>Sold Out!</mat-chip></mat-chip-list>
-        <img  (load)="onImageLoad()" mat-card-image [src]="basePath+'/'+folderPath+'/'+physicalFileName" loading="lazy" alt="Photo of an item"> -->
+
         <mat-divider inset></mat-divider>
-        <!-- <mat-card-content> -->
-            <div class="descripton">
-                <p class="descripton-text">{{description}}</p>
-            </div>
 
+        <div class="descripton">
+            <p class="descripton-text">{{description}}</p>
+        </div>
 
-        <!-- </mat-card-content> -->
         <div class="price">
             <div class="item-price">
                 <h2>{{price | number }}<span class="lbp">LBP</span> </h2>
             </div>
             <div class="quantity">
-                <mat-icon  (click)="decreaseQuantity()">remove</mat-icon>
-                <input (keypress)="validateNumber($event)" (keyup)="seeIfZero()" class="quantity-input" type="number" [(ngModel)]="orderQuantity">
-                <mat-icon (click)="addQuantity()" >add</mat-icon>
+                <mat-icon (click)="decreaseQuantity()">remove</mat-icon>
+                <input (keypress)="validateNumber($event)" (keyup)="seeIfZero()" class="quantity-input" type="number"
+                    [(ngModel)]="orderQuantity">
+                <mat-icon (click)="addQuantity()">add</mat-icon>
             </div>
         </div>
         <div class="btnn">
-            <button [disabled]="quantity<=0" mat-flat-button class="add-to-basket-btn" (click)="addToBasket()">Add To Basket</button>
+            <button [disabled]="quantity<=0" mat-flat-button class="add-to-basket-btn" (click)="addToBasket()">Add To
+                Basket</button>
         </div>
     </mat-card>
 

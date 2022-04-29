@@ -51,10 +51,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
     this.itemsService.searchMode = false
     this.itemsService.searchVar = '';
     this.loadingService.loadSpinner = true
-    // this.itemsService.filterAttr = ''
-    // this.attributeService.attributeValues = []
-    // this.attributeService.attributeFilter = ''
-    // this.itemsService.filteredItems = []
+
     this.getItemsWithPag()
     event.stopPropagation();
   }
@@ -80,8 +77,6 @@ export class SearchComponent implements OnInit, AfterViewInit {
           this.itemsService.searchAnItemWithPag().subscribe(
             (res: Item[]) => {
               this.itemsService.searchMode = true
-              //  this.itemsService.filterAttr = ''
-              //    this.itemsService.filteredItems = []
               this.itemsService.items = []
               this.itemsService.items = res
               this.itemsService.searchScrolledTimes = 2
