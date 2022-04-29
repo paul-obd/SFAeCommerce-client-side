@@ -1,0 +1,176 @@
+.content{
+
+    width: 96%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 2%;
+    border-radius: 0.5%;
+    margin-top: -1.5%;
+    background-color: white;
+    color: rgba(44, 67, 72, 0.911);
+    background-image: url('../../assets/details-bg.jpeg') ;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-weight: bold;
+}
+.stock, .price{
+    font-weight: bolder;
+}
+
+.lbp{
+    color: var(--lblue);
+    font-size: small;
+}
+
+.order-details{
+    width: 90%;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+ 
+}
+
+.divider{
+    width: 90%;
+    height: 2px;
+    background-color: grey;
+}
+
+.details{
+    width: 50%;
+    height: 50%;
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+}
+.vertical-divider{
+    width: 1%;
+    height: 100%;
+}
+.qunatity-input{
+    margin-top: -5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper {
+
+    margin-top: 10% !important;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.img{
+    width: 50%;
+    height: 50%;
+    margin-top: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+:host ::ng-deep .mat-card{
+    width: 40% !important;
+    height: 80% !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.order-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.quantity, .total{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+
+.checkout{
+    width: 90%;
+
+}
+
+::ng-deep .mat-raised-button {
+    background-color: var(--lblue);
+    color: white;
+    width: 100% !important;
+}
+
+@media screen and (max-width: 756px) {
+    .content{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    
+    }
+
+    .img{
+        width: 100%;
+        height: 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .details{
+        width: 96%;
+        height: 50%;
+        margin-top: 2%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .prod-details{
+        margin-left: 4%;
+    }
+
+    .checkout{
+        margin-top: -10% !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .qunatity-input{
+        width: 30%;
+    }
+    :host ::ng-deep .mat-form-field-flex{
+        width: 60px !important;
+    }
+    :host ::ng-deep .mat-form-field{
+        width:60px !important;
+        margin-top: 10% !important;
+    } 
+}

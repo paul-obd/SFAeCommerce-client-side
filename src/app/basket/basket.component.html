@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="header">
+        <div class="title">
+            <h1>Shopping Basket</h1>
+        </div>
+        <div class="remove-all-btn">
+            <button [disabled]="basketService.basket.length <= 0" mat-raised-button (click)="deleteAllFromBasket()" color="warn">Remove All ({{basketService.basket.length}})</button>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div *ngIf="basketService.basket.length <= 0" class="no-items">
+        <h1>No items yet</h1>
+    </div>
+
+    <div *ngIf="basketService.basket.length > 0" class="basket-content mat-elevation-z5">
+        <div class="body">
+           <app-basket-item *ngFor="let item of basketService.basket; let i = index"
+           [i]="i"
+           [itemCode]="item.item_code"
+           [description]="item.description"
+           [price]="item.price"
+           [quantity]="item.quantity"
+           [folderPath]="item.folder_path"
+           [basePath]="item.base_path"
+           [physicalFileName]="item.physical_file_name"
+           [orderQuantity]="item.orderQuantity"
+           ></app-basket-item>
+
+        </div>
+        <hr class="mat-elevation-z1">
+        <div class="footer">
+            <div class="sub-total-and-checkout">
+                <div class="sub-total">
+                    <div class="sub-total-title">
+                        <h1 class="sub-tot-h1">Sub Total:</h1>
+                        <p>{{basketService.basket.length}} items</p>
+                    </div>
+                    <div class="sub-total-price">
+                        <h1 class="price">{{basketService.total | number}}<span class="lbp">LBP</span></h1>
+                    </div>
+                </div>
+                <button mat-flat-button color="primary" class="checkout-btn">Checkout</button>
+            </div>
+        </div>
+    </div>
+</div>

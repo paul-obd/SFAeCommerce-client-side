@@ -1,0 +1,38 @@
+::ng-deep .mat-toolbar{
+    margin-bottom: 2.5%;
+    color: white;
+
+    /* background-color: rgba(10, 2, 119, 0.877); */
+    background-color: var(--blue);
+}
+
+
+::ng-deep .mat-icon{
+    margin-right: 4% !important;
+}
+
+ ::ng-deep .mat-progress-bar{
+    margin-top: -2.5%;
+}
+
+
+
+.parts{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+/* ::ng-deep .mat-progress-bar-fill::after {
+    background-color: var(--lblue);
+
+    
+}
+
+::ng-deep .mat-progress-bar-buffer {
+    background: rgba(255, 255, 255, 0.904);
+} */
+
+

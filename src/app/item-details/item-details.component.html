@@ -1,0 +1,56 @@
+<div class="container" *ngIf="loadingService.loadBar == false">
+    <div class="content" [class.mat-elevation-z3]="true">
+      
+            <div class="img">
+             
+                <img [src]="item.base_path+'/'+item.folder_path+'/'+item.physical_file_name" loading="lazy"
+                    alt="product image">
+               
+            </div>
+        
+        <div class="details">
+            <div class="prod-details">
+                <div class="description">
+                    <h1>{{item.description}}</h1>
+                </div>
+                <div class="price-details">
+                    <h2>Price: <span class="price">{{item.price | number }}</span><span class="lbp">LBP</span> </h2>
+                </div>
+                <div class="stock-details">
+                    <h2>Stock: <span class="stock">{{item.quantity}}</span></h2>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="order-details">
+
+                <div class="quantity">
+                    <h1>Quantity:</h1>
+                    <div class="vertical-divider"></div>
+                    <h1>Total:</h1>
+                </div>
+                <div class="total">
+
+
+                    <div class="qunatity-input">
+
+                        <mat-icon (click)="decreaseQuantity()">remove</mat-icon>
+                        <mat-form-field appearance="outline">
+                            <input matInput class="matInput" [(ngModel)]="orderTotalService.quantity"
+                                (keypress)="validateNumber($event)" (keyup)="doTotal()">
+                        </mat-form-field>
+                        <mat-icon (click)="increaseQuantity()">add</mat-icon>
+
+                    </div>
+                    <div class="vertical-divider"></div>
+                    <h2><span class="price">{{ orderTotalService.total | number }}</span><span class="lbp">LBP</span>
+                    </h2>
+                </div>
+            </div>
+            <div class="checkout">
+                <button mat-raised-button
+                    [disabled]="orderTotalService.total == 0|| orderTotalService.total == undefined || orderTotalService.total ==null ||  orderTotalService.quantity > orderTotalService.stock || orderTotalService.quantity.toString() == ''">Buy
+                    Now!</button>
+            </div>
+        </div>
+    </div>
+</div>

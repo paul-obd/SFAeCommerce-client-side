@@ -1,0 +1,30 @@
+<div class="content">
+    <div class="filterAndSerch">
+        <div class="filter">
+            <button mat-button (click)="toggleDrawer()">
+                <mat-icon *ngIf="isDrawerOpen != 'open'" matPrefix>filter_alt</mat-icon>
+                <mat-icon *ngIf="isDrawerOpen == 'open'" matPrefix>arrow_back</mat-icon>
+                Filter</button>
+        </div>
+        <button (click)="goToBasket()" mat-mini-fab cdkDragBoundary=".mat-typography" cdkDrag mat-icon-button color="primary" aria-label="">
+            <mat-icon [matBadge]="basketService.basket.length" matBadgeColor="warn">shopping_cart</mat-icon>
+        </button>
+    </div>
+  
+    <mat-divider></mat-divider>
+    <div class="i-a-f">
+        <mat-drawer-container class="mat-drawer-content-width" autosize>
+            <mat-drawer  fixedInViewport="true" #drawer class="mat-elevation-z8" mode="side">
+                <app-filter></app-filter>
+            </mat-drawer>
+          
+            <mat-drawer-content >
+                <div class="items">
+                    <app-items></app-items>
+                </div>
+            </mat-drawer-content>
+        </mat-drawer-container>
+    </div>
+
+</div>
+

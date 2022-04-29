@@ -1,0 +1,61 @@
+<div class="content">
+
+    <mat-accordion>
+        <mat-expansion-panel [expanded]="true" class="mat-elevation-z1">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Category
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>
+                <mat-form-field appearance="outline">
+                    <mat-select name="filterSelect" (selectionChange)="onAttrSelect()"
+                    [(ngModel)]="itemsService.filterAttr" placeholder="Select A filter">
+                        <mat-option *ngFor="let attrr of attributeValueService.attributes"
+                            [value]="attrr.attributeCode">
+                            {{attrr.description}}</mat-option>
+                    </mat-select>
+                    <mat-hint>Select a Category</mat-hint>
+                </mat-form-field>
+            </p>
+
+            <div @fade *ngIf="itemsService.filterAttr != null && itemsService.filterAttr != ''" class="clear">
+                <button disableRipple="true" (click)="clearOnlyAttrFilterAndGetItems()" mat-flat-button>Clear Filter<mat-icon>
+                        close
+                    </mat-icon></button>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-divider></mat-divider>
+
+    <mat-accordion>
+        <mat-expansion-panel [expanded]="true" class="mat-elevation-z1">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Supplier
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <p @fade class="attr-value">
+                <mat-form-field appearance="outline">
+                    <mat-select name="filterAttributeValue" (selectionChange)="onAttrValueSelect()"
+                        [(ngModel)]="itemsService.filterAttrValue" placeholder="Select A filter">
+                        <mat-option *ngFor="let attrr of attributeValueService.attributeValues"
+                            [value]="attrr.attributeValueCode">
+                            {{attrr.description}}</mat-option>
+                    </mat-select>
+                    <mat-hint>Select Supplier Name</mat-hint>
+                   
+                </mat-form-field>
+            </p>
+
+            <div @fade *ngIf="itemsService.filterAttrValue != null && itemsService.filterAttrValue != ''" class="clear">
+                <button disableRipple="true" (click)="clearOnlyAttrValueFilterAndGetItems()" mat-flat-button>Clear Filter<mat-icon>
+                        close
+                    </mat-icon></button>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+</div>

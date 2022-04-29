@@ -1,0 +1,166 @@
+.card{
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.price{
+    width: 100%;
+    color: var(--lblue);
+    font-weight: bolder;
+    font-size: x-large;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+ 
+}
+
+.quantity{
+    display: flex;
+    justify-content: end;
+    align-items: center !important;
+    color: rgba(44, 67, 72, 0.911);
+    margin-top: 2%;
+}
+
+.quantity-input{
+    width: 25%;
+    background-color: transparent;
+    border: transparent;   
+ border: 0;
+    outline: 0;
+    
+
+}
+
+.quantity-input :active{
+    border: 0;
+    outline: 0;
+    border: transparent;
+    
+}
+
+:host ::ng-deep .mat-icon{
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start !important;
+    background-color: var(--bgColor);
+    border-radius: 50%;
+}
+
+.disable{
+    filter:opacity(0.5);
+}
+
+img{
+    margin-top: 2% !important;
+    object-fit: contain;
+}
+.lbp{
+   
+    color: rgba(44, 67, 72, 0.911);
+    font-size: small;
+}
+
+.mat-card-content{
+    margin-top: 2%;
+}
+
+.mat-card {
+
+    color: rgba(44, 67, 72, 0.911);
+
+}
+.stock{
+    color: var(--blue);
+}
+
+
+.sold-out{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sold-out-h1{
+    color: red;
+}
+
+
+
+.badge{
+    float: left;
+    position: absolute;
+    left: 2%;
+    top: 2%;
+    z-index: 1000;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 2px;
+    font-size: x-small;
+
+
+    height: 6%;
+    width: 17%;
+    flex-direction: column;
+ 
+  
+}
+
+.red{
+    background-color: rgb(230, 47, 47);
+}
+
+.green{
+    background-color: rgb(46, 211, 5);
+}
+
+
+.add-to-basket-btn{
+
+    background-color: var(--blue);
+    color: white;
+    width: 100% !important;
+
+}
+
+.btnn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+p{
+    margin: 0% !important;
+}
+
+
+.descripton{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-bottom: 2%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+input[type=number] {
+  -moz-appearance: textfield;
+}

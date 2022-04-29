@@ -1,0 +1,22 @@
+<mat-toolbar [class.mat-elevation-z5]="true">
+    <div class="parts">
+        <div class="part-1">
+            <mat-icon *ngIf="toolbarService.ouOfHome" (click)="back()">arrow_back</mat-icon>
+            <span>E-Commerce</span>
+        </div>
+
+        <div class="part-2">
+            <div class="search-btn">
+                <button (click)="openSearch()" *ngIf="itemsService.openSearch  == false" mat-button>
+                    <mat-icon>search</mat-icon>
+                </button>
+            </div>
+            <div *ngIf="itemsService.openSearch  == true" class="search">
+                <app-search></app-search>
+            </div>
+        </div>
+
+    </div>
+
+</mat-toolbar>
+<mat-progress-bar mode="indeterminate" *ngIf="loadingService.loadBar == true"></mat-progress-bar>
