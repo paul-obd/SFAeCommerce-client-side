@@ -1,8 +1,29 @@
 .content {
-
     margin-left: 2%;
     margin-right: 2%;
+}
 
+.grid-btn{
+    background-color: grey !important;
+    margin-left: 2%;
+}
+
+.filter-and-sort{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: row;
+}
+
+
+.sortby{
+    margin-left: 1%;
+}
+
+
+app-filter{
+    width: 50%;
 }
 
 ::ng-deep .mat-divider {
@@ -47,9 +68,11 @@
 
 :host ::ng-deep .mat-drawer {
 
-    padding: 16px;
+    /* padding: 0px; */
+    max-width: 20% !important;
     min-height: 100vh;
     border-right: none;
+    overflow-y: hidden !important;
 
 }
 
@@ -79,10 +102,13 @@
 
 :host ::ng-deep .mat-button {
     border: 1px solid var(--blue);
-    border-radius: 1px;
+    border-radius: 6px;
+    padding: 0.5em;
+    padding-left: 1em;
+    padding-right: 1em;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
     .search-btn {
         margin-top: 2% !important;
     }
@@ -94,6 +120,15 @@
     :host ::ng-deep .mat-drawer-content {
         width: 100% !important;
     }
+    :host ::ng-deep .mat-drawer {
+
+        /* padding: 0px; */
+        max-width: 100% !important;
+        min-height: 100vh;
+        border-right: none;
+        overflow-y: hidden !important;
+    
+    }
 
 
 }
@@ -102,6 +137,10 @@
     .search-btn {
         margin-top: 2.5% !important;
     }
+    
+
+
+
 
 }
 
@@ -110,5 +149,7 @@
     .search-btn {
         margin-top: 1% !important;
     }
+
+
 
 }

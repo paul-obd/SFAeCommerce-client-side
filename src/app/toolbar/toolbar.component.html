@@ -6,6 +6,14 @@
         </div>
 
         <div class="part-2">
+            <div class="full-screen">
+                <button *ngIf="full == false" (click)="openFullscreen()" mat-button>
+                    <mat-icon>fullscreen</mat-icon>
+                </button>
+                <button *ngIf="full == true" (click)="closeFullscreen()" mat-button>
+                    <mat-icon>fullscreen_exit</mat-icon>
+                </button>
+            </div>
             <div class="search-btn">
                 <button (click)="openSearch()" *ngIf="itemsService.openSearch  == false" mat-button>
                     <mat-icon>search</mat-icon>

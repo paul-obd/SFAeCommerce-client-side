@@ -3,23 +3,23 @@
         <mat-spinner></mat-spinner>
     </div>
     <div *ngIf="loadingService.loadSpinner == false">
-        <div *ngIf="itemsService.items.length > 0" fxLayout="row wrap" fxLayoutGap="10px grid">
+        <div *ngIf="itemsService.items.length > 0 && responsiveService.grid == 'cards'" fxLayout="row wrap" fxLayoutGap="10px grid">
             <div fxFlex.md="50%" fxFlex.lg="25%" fxFlex.xl="25%" fxFlex.xs="100%" fxFlex.sm="50%"
                 *ngFor="let item of itemsService.items">
                 <app-item [itemCode]="item.item_code" [description]="item.description" [price]="item.price"
                     [quantity]="item.quantity" [folderPath]="item.folder_path" [basePath]="item.base_path"
-                    [physicalFileName]="item.physical_file_name"></app-item>
+                    [physicalFileName]="item.physical_file_name" [supplier]="item.supplier"></app-item>
             </div>
         </div>
 
+
+        <app-items-table *ngIf="itemsService.items.length > 0 && responsiveService.grid == 'table'" ></app-items-table>
+
         <div *ngIf="(itemsService.searchMode == true && itemsService.items.length == 0 && loadingService.loadSpinner == false)
-    || (itemsService.filterAttr != '' && itemsService.items.length == 0 && itemsService.filterAttr != null)
-    
-    " class="h1">No Items Found</div>
+    || (itemsService.filterAttributeValuesCode && itemsService.items.length == 0)" class="h1">No Items Found</div>
 
         <div *ngIf="loadingService.paginationLoad == true" class="pagination-load">
             <p>Loading more items</p>
             <mat-spinner style="margin:0 auto;" [diameter]="30"></mat-spinner>
         </div>
     </div>
-

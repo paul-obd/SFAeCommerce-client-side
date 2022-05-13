@@ -1,8 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-    --lblue: #1e90ff;
+    --lblue: rgba(10, 2, 119, 0.877);
+    /* --lblue: #1e90ff; */
     --blue: rgba(10, 2, 119, 0.877);
     --bgColor: #f5f4f4;
  }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #f5f4f4;}
+
+::-webkit-scrollbar {
+    width: 4px;
+  }
+::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(155, 155, 155, 0.5);
+    border-radius: 20px;
+    border: transparent;
+  }

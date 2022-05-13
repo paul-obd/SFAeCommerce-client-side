@@ -1,0 +1,31 @@
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper {
+    margin: 0% !important;
+}
+
+:host ::ng-deep .mat-form-field-wrapper {
+    padding-bottom: 0em !important;
+    
+}
+
+.sort-by{
+ border: 1px solid var(--blue);
+ padding: 0.6em;
+ margin-right: 1%;
+}
+
+.contain{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+/* Border */
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: var(--blue);
+  }
+  /* Font color */
+:host ::ng-deep input.mat-input-element {
+    color: var(--blue);
+  }

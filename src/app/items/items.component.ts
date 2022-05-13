@@ -1,7 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AttributeValue } from '../models/attribute-value.model';
 import { Item } from '../models/Item.model';
+import { AttributeValueService } from '../services/attribute-value.service';
 import { ItemsService } from '../services/items.service';
 import { LoadingService } from '../services/loading.service';
+import { ResponsiveService } from '../services/responsive.service';
 import { ToolbarService } from '../services/toolbar.service';
 
 @Component({
@@ -11,10 +14,16 @@ import { ToolbarService } from '../services/toolbar.service';
 })
 export class ItemsComponent implements OnInit, OnDestroy {
 
-  constructor(public itemsService: ItemsService, public toolbarService: ToolbarService, public loadingService: LoadingService) {
+  constructor(public itemsService: ItemsService, 
+    public toolbarService: ToolbarService,
+     public loadingService: LoadingService, 
+     private attributeValueService: AttributeValueService,
+     public responsiveService: ResponsiveService) {
 
 
   }
+
+
   ngOnDestroy(): void {
     this.toolbarService.ouOfHome = true
   }
@@ -23,18 +32,38 @@ export class ItemsComponent implements OnInit, OnDestroy {
 
     this.toolbarService.ouOfHome = false
     if (this.itemsService.searchVar != null && this.itemsService.searchMode == true) {
+
       this.itemsService.searchScrolledTimes = 1
       this.itemsService.items = []
       this.getSearchItemsWithPagination()
+   
     }
-    else if (this.itemsService.filterAttr == '' || this.itemsService.filterAttr == null) {
-      this.initItems()
+    // else if (this.itemsService.filterAttr != '' && this.itemsService.filterAttr != null && this.itemsService.filterAttr != undefined
+    //   && this.itemsService.filterAttrValue != '' && this.itemsService.filterAttrValue != null && this.itemsService.filterAttrValue != undefined) {
+     
+    //   this.itemsService.items = []
+    //   this.itemsService.filterScrollerTimes = 1
+    //   this.getFilteredItemsByAttrAndAttrValueWithPagination()
+    // }
+    // else if (this.itemsService.filterAttr != '' && this.itemsService.filterAttr != null && this.itemsService.filterAttr != undefined) {
+    //   this.itemsService.items = []
+    //   this.itemsService.filterScrollerTimes = 1
+    //   this.getFilteredItemsOnlyByAttrWithPagination()
+     
 
-    } else {
+    // }
+    else if (this.itemsService.filterAttributeValuesCode.length > 0) {
       this.itemsService.items = []
       this.itemsService.filterScrollerTimes = 1
       this.getFilteredItemsOnlyByAttrValueWithPagination()
+
     }
+    
+    else {
+      this.initItems()
+   
+    }
+    
   }
 
   initItems() {
@@ -43,7 +72,8 @@ export class ItemsComponent implements OnInit, OnDestroy {
     this.itemsService.getItemsPagination().subscribe(
       (res: Item[]) => {
         this.itemsService.items = []
-        this.itemsService.items = res
+       // this.itemsService.items = []
+        this.itemsService.items = res as Item[]
         this.itemsService.scrolledTimes = 2
         this.loadingService.loadBar = false
       }
@@ -51,34 +81,41 @@ export class ItemsComponent implements OnInit, OnDestroy {
   }
 
   onScroll() {
-
-
+    
+ 
     if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 2) {
       this.loadingService.paginationLoad = true
-
+  
+       
+  
       if (this.itemsService.searchVar !== null && this.itemsService.searchVar !== '' && this.itemsService.searchVar !== undefined) {
+       
         this.getSearchItemsWithPagination()
 
       }
-      else if (this.itemsService.filterAttr != '' && this.itemsService.filterAttr != null && this.itemsService.filterAttr != undefined
-        && this.itemsService.filterAttrValue != '' && this.itemsService.filterAttrValue != null && this.itemsService.filterAttrValue != undefined) {
+      // else if (this.itemsService.filterAttr != '' && this.itemsService.filterAttr != null && this.itemsService.filterAttr != undefined
+      //   && this.itemsService.filterAttrValue != '' && this.itemsService.filterAttrValue != null && this.itemsService.filterAttrValue != undefined) {
 
-        this.getFilteredItemsByAttrAndAttrValueWithPagination()
+      //   this.getFilteredItemsByAttrAndAttrValueWithPagination()
 
-      } else if (this.itemsService.filterAttr != '' && this.itemsService.filterAttr != null && this.itemsService.filterAttr != undefined) {
-        this.getFilteredItemsOnlyByAttrWithPagination()
+      // } else if (this.itemsService.filterAttr != '' && this.itemsService.filterAttr != null && this.itemsService.filterAttr != undefined) {
+      //   this.getFilteredItemsOnlyByAttrWithPagination()
 
-      }
-      else if (this.itemsService.filterAttrValue != '' && this.itemsService.filterAttrValue != null && this.itemsService.filterAttrValue != undefined) {
+      // }
+      else if (this.itemsService.filterAttributeValuesCode.length > 0) {
+      
         this.getFilteredItemsOnlyByAttrValueWithPagination()
 
       }
 
       else {
-
+     
         this.getItemsWithPagination()
-
+         
+    
       }
+
+      
 
     }
   }
@@ -92,6 +129,7 @@ export class ItemsComponent implements OnInit, OnDestroy {
         });
       }
     )
+  //  this.itemsService.putItemInTable()
 
     this.itemsService.scrolledTimes += 1
     this.loadingService.paginationLoad = false
@@ -100,39 +138,39 @@ export class ItemsComponent implements OnInit, OnDestroy {
   getFilteredItemsOnlyByAttrValueWithPagination() {
     this.itemsService.getFilteredItemsOnlyByAttrValue().subscribe(
       (res: Item[]) => {
-
         res.forEach(item => {
           this.itemsService.items.push(item)
         });
       }
     )
+   // this.itemsService.putItemInTable()
     this.itemsService.filterScrollerTimes += 1
     this.loadingService.paginationLoad = false
   }
 
-  getFilteredItemsOnlyByAttrWithPagination() {
-    this.itemsService.getFilteredItemsOnlyByAttr().subscribe(
-      (res: Item[]) => {
-        res.forEach(item => {
-          this.itemsService.items.push(item)
-        });
-      }
-    )
-    this.itemsService.filterScrollerTimes += 1
-    this.loadingService.paginationLoad = false
-  }
+  // getFilteredItemsOnlyByAttrWithPagination() {
+  //   this.itemsService.getFilteredItemsOnlyByAttr().subscribe(
+  //     (res: Item[]) => {
+  //       res.forEach(item => {
+  //         this.itemsService.items.push(item)
+  //       });
+  //     }
+  //   )
+  //   this.itemsService.filterScrollerTimes += 1
+  //   this.loadingService.paginationLoad = false
+  // }
 
-  getFilteredItemsByAttrAndAttrValueWithPagination() {
-    this.itemsService.getFilteredItemsWithAttrAndAttrValue().subscribe(
-      (res: Item[]) => {
-        res.forEach(item => {
-          this.itemsService.items.push(item)
-        });
-      }
-    )
-    this.itemsService.filterScrollerTimes += 1
-    this.loadingService.paginationLoad = false
-  }
+  // getFilteredItemsByAttrAndAttrValueWithPagination() {
+  //   this.itemsService.getFilteredItemsWithAttrAndAttrValue().subscribe(
+  //     (res: Item[]) => {
+  //       res.forEach(item => {
+  //         this.itemsService.items.push(item)
+  //       });
+  //     }
+  //   )
+  //   this.itemsService.filterScrollerTimes += 1
+  //   this.loadingService.paginationLoad = false
+  // }
 
 
 
@@ -145,6 +183,7 @@ export class ItemsComponent implements OnInit, OnDestroy {
         });
       }
     )
+    //this.itemsService.putItemInTable()
     this.itemsService.searchScrolledTimes += 1
     this.loadingService.paginationLoad = false
   }

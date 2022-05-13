@@ -9,6 +9,7 @@
     <div class="body">
         <div class="description">
             <h2>{{description}}</h2>
+            <p>Supplier: {{supplier}}</p>
             <div class="quantity">
                 <mat-icon (click)="decreaseQuantity()">remove</mat-icon>
                 <input (keypress)="validateNumber($event)" (keyup)="seeIfZero()" class="quantity-input" type="number"
@@ -18,7 +19,9 @@
         </div>
 
         <div class="price">
-            <h1>{{price | number }}<span class="lbp">LBP</span></h1>
+            <div class="item-price">
+                <h1>{{price | number}}</h1> <span class="lbp">LBP </span>
+             </div>
         
             <mat-icon class="delete" (click)="deleteFromBasket()">delete_forever</mat-icon>
         </div>

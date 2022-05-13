@@ -6,4 +6,6 @@ export class Item {
     folder_path: string;
     base_path: string;
     physical_file_name: string;
+    supplier: string;
+    orderQuantity: number = 1
 }

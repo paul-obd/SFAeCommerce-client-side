@@ -7,16 +7,47 @@
     overflow: hidden;
 }
 
+.load-image{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
 .price{
     width: 100%;
     color: var(--lblue);
-    font-weight: bolder;
-    font-size: x-large;
+    /* font-weight: bolder;
+    font-size: medium; */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
  
+}
+.item-price{
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+}
+
+h2{
+    font-weight: bolder;
+    font-size: medium !important;
+
+
+}
+
+.lbp{
+   
+    color: rgba(44, 67, 72, 0.911);
+    font-size: x-small;
+    font-weight: normal;
+    padding-inline-start: 2px;
+
 }
 
 .quantity{
@@ -31,10 +62,8 @@
     width: 25%;
     background-color: transparent;
     border: transparent;   
- border: 0;
+    border: 0;
     outline: 0;
-    
-
 }
 
 .quantity-input :active{
@@ -51,6 +80,7 @@
     align-items: flex-start !important;
     background-color: var(--bgColor);
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .disable{
@@ -58,14 +88,34 @@
 }
 
 img{
-    margin-top: 2% !important;
+    /* margin-bottom: 5% !important; */
     object-fit: contain;
+    width: 100%;
+    height: 100%;
 }
-.lbp{
-   
-    color: rgba(44, 67, 72, 0.911);
-    font-size: small;
+.card-head{
+    width: 100%;
+    height: 46%;
+    margin-bottom: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
 }
+.card-body{
+    width: 100%;
+    height: 50%;
+}
+.body-content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
 
 .mat-card-content{
     margin-top: 2%;
@@ -117,11 +167,11 @@ img{
 }
 
 .red{
-    background-color: rgb(230, 47, 47);
+    background-color: #8b0000;
 }
 
 .green{
-    background-color: rgb(46, 211, 5);
+    background-color: #296e01;
 }
 
 
@@ -144,6 +194,11 @@ img{
 p{
     margin: 0% !important;
 }
+.disable-mat-icon{
+    cursor: not-allowed;
+    pointer-events: none;
+    filter:opacity(0.5);
+}
 
 
 .descripton{
@@ -164,3 +219,4 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+

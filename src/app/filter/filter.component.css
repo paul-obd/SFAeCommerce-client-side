@@ -1,3 +1,42 @@
+.content{
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.show-less {
+  height: 10rem;
+  overflow: hidden;
+  padding: 1rem;
+  
+}
+
+:host ::ng-deep .mat-flat-button{
+  font-size: x-small;
+  color: blue;
+  display: flex !important;
+  justify-content: start !important;
+  align-items: center !important;
+  flex-direction: row !important;
+  margin-left: -5%;
+}
+
+:host ::ng-deep .mat-list-base .mat-list-item .mat-list-item-content, .mat-list-base .mat-list-option .mat-list-item-content {
+
+  font-size: small !important;
+  
+}
+
+
+/*break the words of the checkbox*/
+:host::ng-deep.mat-checkbox-layout{
+  white-space: normal !important;
+  }
+  
+:host::ng-deep.mat-checkbox-inner-container{
+      margin-top: 4px;
+}
+/******************************************/
+
 
 
 :host ::ng-deep .mat-expansion-panel-header-title {
@@ -42,4 +81,22 @@
 
 :host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
   color: var(--blue) !important;
+}
+
+
+
+
+
+input{
+    color: var(--lblue);
+    padding: 3px;
+    outline: 0;
+
+}
+
+input :active{
+    border: 0;
+    outline: 0;
+    border-color: var(--blue) !important;
+    outline-color: var(--blue) !important;
 }

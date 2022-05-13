@@ -1,41 +1,50 @@
 <div class="contain">
     <mat-card class="card">
+        <div class="card-head" >
+            <!-- <div *ngIf="imageIsLoaded == false" class="load-image">
+                <mat-spinner></mat-spinner>
+                [ngClass]="{'skeleton': imageIsLoaded == false}"
+            </div> -->
 
-        <div *ngIf="imageIsLoaded == false" class="load-image">
-            <mat-spinner></mat-spinner>
+
+
+            <div class="badge mat-elevation-z2" [ngClass]="quantity <= 0 ? 'red': 'green'">
+
+                <p *ngIf="quantity<=0">Sold-out</p>
+                <p *ngIf="quantity>0">In-Stock</p>
+
+            </div>
+
+            <img (load)="onImageLoad()" mat-card-image [src]="basePath+'/'+folderPath+'/'+physicalFileName"
+                loading="lazy" alt="Photo of an item"> 
+
         </div>
-
-        <div class="badge mat-elevation-z2" [ngClass]="quantity <= 0 ? 'red': 'green'">
-
-            <p *ngIf="quantity<=0">Sold-out</p>
-            <p *ngIf="quantity>0">In-Stock</p>
-
-        </div>
-
-        <img (load)="onImageLoad()" mat-card-image [src]="basePath+'/'+folderPath+'/'+physicalFileName" loading="lazy"
-            alt="Photo of an item">
-
-
         <mat-divider inset></mat-divider>
+        <div class="card-body">
+            <div class="body-content">
+                <div class="descripton">
+                    <p class="descripton-text">{{description}}</p>
+                </div>
 
-        <div class="descripton">
-            <p class="descripton-text">{{description}}</p>
-        </div>
-
-        <div class="price">
-            <div class="item-price">
-                <h2>{{price | number }}<span class="lbp">LBP</span> </h2>
+                <div class="price">
+                    <div class="item-price">
+                       <h2>{{price | number }}</h2> <span class="lbp">LBP </span>
+                    </div>
+                    <div class="quantity">
+                        <mat-icon [ngClass]="{'disable-mat-icon': quantity<= 0}" (click)="decreaseQuantity()">remove
+                        </mat-icon>
+                        <input [disabled]="quantity<=0" (keypress)="validateNumber($event)" (keyup)="seeIfZero()"
+                            class="quantity-input" type="number" [(ngModel)]="orderQuantity">
+                        <mat-icon [ngClass]="{'disable-mat-icon': quantity<= 0}" (click)="addQuantity()">add</mat-icon>
+                    </div>
+                </div>
+                <div class="btnn">
+                    <button  [disabled]="quantity<=0" mat-flat-button class="add-to-basket-btn"
+                        (click)="addToBasket()">Add
+                        To
+                        Basket</button>
+                </div>
             </div>
-            <div class="quantity">
-                <mat-icon (click)="decreaseQuantity()">remove</mat-icon>
-                <input (keypress)="validateNumber($event)" (keyup)="seeIfZero()" class="quantity-input" type="number"
-                    [(ngModel)]="orderQuantity">
-                <mat-icon (click)="addQuantity()">add</mat-icon>
-            </div>
-        </div>
-        <div class="btnn">
-            <button [disabled]="quantity<=0" mat-flat-button class="add-to-basket-btn" (click)="addToBasket()">Add To
-                Basket</button>
         </div>
     </mat-card>
 

@@ -9,5 +9,6 @@ export class BasketItem{
     physical_file_name: string;
 
     orderQuantity: number;
+    supplier: string;
     
 }

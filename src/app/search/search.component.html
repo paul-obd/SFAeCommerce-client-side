@@ -1,7 +1,7 @@
 <form>
 
     <div  @search class="input">
-        <input  name="searchBar" #search [(ngModel)]="itemsService.searchVar" placeholder="Search a product">
+        <input  name="searchBar"  #search [(ngModel)]="itemsService.searchVar" placeholder="Search a product">
         <div matSuffix>
             <mat-icon (click)="closeSearch($event)">close</mat-icon>
         </div>

@@ -4,43 +4,62 @@
             <h1>Shopping Basket</h1>
         </div>
         <div class="remove-all-btn">
-            <button [disabled]="basketService.basket.length <= 0" mat-raised-button (click)="deleteAllFromBasket()" color="warn">Remove All ({{basketService.basket.length}})</button>
+            <button [disabled]="basketService.basket.length <= 0" mat-raised-button (click)="deleteAllFromBasket()"
+                color="warn">Remove All ({{basketService.basket.length}})</button>
         </div>
     </div>
     <mat-divider></mat-divider>
     <div *ngIf="basketService.basket.length <= 0" class="no-items">
-        <h1>No items yet</h1>
+        <h1>No items in the basket yet</h1>
     </div>
+    <div *ngIf="basketService.basket.length > 0" class="content-body">
 
-    <div *ngIf="basketService.basket.length > 0" class="basket-content mat-elevation-z5">
-        <div class="body">
-           <app-basket-item *ngFor="let item of basketService.basket; let i = index"
-           [i]="i"
-           [itemCode]="item.item_code"
-           [description]="item.description"
-           [price]="item.price"
-           [quantity]="item.quantity"
-           [folderPath]="item.folder_path"
-           [basePath]="item.base_path"
-           [physicalFileName]="item.physical_file_name"
-           [orderQuantity]="item.orderQuantity"
-           ></app-basket-item>
 
+        <div  class="basket-content mat-elevation-z5">
+            <div class="body">
+                <app-basket-item *ngFor="let item of basketService.basket; let i = index" [i]="i"
+                    [itemCode]="item.item_code" [description]="item.description" [price]="item.price"
+                    [quantity]="item.quantity" [folderPath]="item.folder_path" [basePath]="item.base_path"
+                    [physicalFileName]="item.physical_file_name" [orderQuantity]="item.orderQuantity"
+                    [supplier]="item.supplier"></app-basket-item>
+
+            </div>
+            <hr class="mat-elevation-z1" *ngIf="this.responsiveService.isMobile == true">
+            <div class="footer" *ngIf="this.responsiveService.isMobile == true">
+                <div class="sub-total-and-checkout">
+                    <div class="sub-total">
+                        <div class="sub-total-title">
+                            <h1 class="sub-tot-h1">Sub Total:</h1>
+                            <p>{{basketService.basket.length}} items</p>
+                        </div>
+                        <div class="sub-total-price">
+                            <div class="item-price">
+                                <h1 class="price">{{basketService.total | number}}</h1> <span class="lbp">LBP </span>
+                             </div>
+                        </div>
+                    </div>
+                    <button mat-flat-button color="primary" class="checkout-btn">Checkout</button>
+                </div>
+            </div>
         </div>
-        <hr class="mat-elevation-z1">
-        <div class="footer">
-            <div class="sub-total-and-checkout">
-                <div class="sub-total">
+
+        <div class="big-screen-total mat-elevation-z3" *ngIf="this.responsiveService.isMobile == false">
+            <div class="big-screen-sub-total-and-checkout">
+                <div class="big-screen-sub-total">
                     <div class="sub-total-title">
                         <h1 class="sub-tot-h1">Sub Total:</h1>
+                        <div class="item-price ">
+                            <h1 class="price">{{basketService.total | number}}</h1> <span class="lbp">LBP </span>
+                         </div>
+                        <!-- <h1 class="price">{{basketService.total | number}}<span class="lbp">LBP</span></h1> -->
                         <p>{{basketService.basket.length}} items</p>
-                    </div>
-                    <div class="sub-total-price">
-                        <h1 class="price">{{basketService.total | number}}<span class="lbp">LBP</span></h1>
                     </div>
                 </div>
                 <button mat-flat-button color="primary" class="checkout-btn">Checkout</button>
             </div>
         </div>
+
+
+
     </div>
 </div>

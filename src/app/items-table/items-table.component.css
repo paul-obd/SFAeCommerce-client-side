@@ -1,0 +1,25 @@
+
+table{
+    width: 100%;
+    border-collapse: collapse; 
+    background-color: white;
+   
+    border-radius: 5px;
+}
+table, th, td{
+    border-color: transparent !important;
+}
+
+th{
+    text-align: start !important;
+}
+
+.tr {
+    border-bottom: 1px solid rgb(168, 168, 168) !important;
+}
+
+
+.grey{
+    background-color: rgb(231, 231, 231);
+}
+

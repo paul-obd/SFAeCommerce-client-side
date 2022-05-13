@@ -1,4 +1,3 @@
-import { EventHandlerVars } from '@angular/compiler/src/compiler_util/expression_converter';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Item } from '../models/Item.model';
@@ -70,5 +69,6 @@ export class ItemDetailsComponent implements OnInit {
   doTotal() {
     this.orderTotalService.doTotal()
   }
+
 
 }

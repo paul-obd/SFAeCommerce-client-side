@@ -1,4 +1,4 @@
-<div class="content">
+<!-- <div class="content">
 
     <mat-accordion>
         <mat-expansion-panel [expanded]="true" class="mat-elevation-z1">
@@ -9,7 +9,7 @@
             </mat-expansion-panel-header>
             <p>
                 <mat-form-field appearance="outline">
-                    <mat-select name="filterSelect" (selectionChange)="onAttrSelect()"
+                    <mat-select name="filterSelect"  (selectionChange)="onAttrSelect()"
                     [(ngModel)]="itemsService.filterAttr" placeholder="Select A filter">
                         <mat-option *ngFor="let attrr of attributeValueService.attributes"
                             [value]="attrr.attributeCode">
@@ -57,5 +57,41 @@
             </div>
         </mat-expansion-panel>
     </mat-accordion>
+
+</div> -->
+
+<div class="content">
+    <!-- <mat-accordion *ngFor="let attr of attributeValueService.attributes; let i = index">
+        <mat-expansion-panel [expanded]="true" class="mat-elevation-z1">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{attr.description}}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-divider></mat-divider>
+            <div class="body">
+                <mat-list [ngClass]="{'show-less': attr.showShortDesciption == true}"> -->
+                    <!--Search Hon-->
+                    <!-- <mat-list-item>
+                        <input (keyup)="initSearchListener(i)"  name="searchBar" type="search" #search [(ngModel)]="attr.searchValue" [placeholder]="'Search a ' +attr.description ">
+                    </mat-list-item>
+
+                    <mat-list-item *ngFor="let attrvalue of attributeValueService.attributes[i].attributeValues; let e = index">
+                        <mat-checkbox [(ngModel)]="attrvalue.checked" (change)="getOrRemoveItems(i, e)" color="primary">{{attrvalue.description}}</mat-checkbox>
+                    </mat-list-item>
+                </mat-list>
+            </div>
+            <button mat-flat-button (click)="attr.showShortDesciption = !attr.showShortDesciption ">
+                <mat-icon matPrefix>{{ attr.showShortDesciption ? 'expand_more': 'expand_less' }}</mat-icon>
+                {{ attr.showShortDesciption ? 'SHOW ALL': 'SHOW LESS' }}
+            </button>
+        </mat-expansion-panel>
+ 
+        <mat-divider></mat-divider>
+    </mat-accordion> -->
+    <app-filter-attr *ngFor="let attr of attributeValueService.attributes"
+    [attribute]="attr"
+    [attributeValues]="attr.attributeValues"
+    ></app-filter-attr>
 
 </div>

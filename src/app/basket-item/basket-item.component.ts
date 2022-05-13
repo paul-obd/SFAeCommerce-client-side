@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BasketService } from '../services/basket.service';
+import { DialogService } from '../services/dialog.service';
+import { SnackbarService } from '../services/snackbar.service';
 
 @Component({
   selector: 'app-basket-item',
@@ -17,44 +19,46 @@ export class BasketItemComponent implements OnInit {
   @Input() basePath: string;
   @Input() physicalFileName: string;
   @Input() orderQuantity: number = 1;
+  @Input() supplier: string;
 
   imageIsLoaded: boolean = false
 
 
-  constructor(public basketService: BasketService) { }
+  constructor(public basketService: BasketService, private dialogService: DialogService, private snackbar: SnackbarService) { }
 
   ngOnInit(): void {
   }
 
-  onImageLoad(){
+  onImageLoad() {
     this.imageIsLoaded = true
   }
 
-  addQuantity(){
-    if( this.basketService.basket[this.i].orderQuantity.toString() == ''){
-      this.basketService.basket[this.i].orderQuantity = 0 
+  addQuantity() {
+    if (this.basketService.basket[this.i].orderQuantity.toString() == '') {
+      this.basketService.basket[this.i].orderQuantity = 0
     }
-    this.basketService.basket[this.i].orderQuantity = Number.parseInt(this.basketService.basket[this.i].orderQuantity.toString()) 
+    this.basketService.basket[this.i].orderQuantity = Number.parseInt(this.basketService.basket[this.i].orderQuantity.toString())
     this.basketService.basket[this.i].orderQuantity += 1
     this.basketService.doTotal()
   }
 
 
-  decreaseQuantity(){
+  decreaseQuantity() {
 
     if (this.basketService.basket[this.i].orderQuantity == 1) {
-      alert("Quantity can't be 0")
-      
-    }else{
+
+      this.snackbar.openSnackbar("Quantity can't be 0")
+
+    } else {
       if (this.basketService.basket[this.i].orderQuantity == 0 || this.basketService.basket[this.i].orderQuantity == null) {
-        alert("Quantity can't be < 0")
-        this.basketService.basket[this.i].orderQuantity = 1 
+        this.snackbar.openSnackbar("Quantity can't be < 0")
+        this.basketService.basket[this.i].orderQuantity = 1
         return;
       }
       this.basketService.basket[this.i].orderQuantity -= 1
       this.basketService.doTotal()
     }
-   
+
   }
 
   validateNumber(event: KeyboardEvent) {
@@ -68,24 +72,32 @@ export class BasketItemComponent implements OnInit {
 
     ) {
       event.preventDefault();
-    }else{
+    } else {
       this.basketService.doTotal()
     }
 
   }
 
-  seeIfZero(){
-    if(this.basketService.basket[this.i].orderQuantity == 0 || this.basketService.basket[this.i].orderQuantity==null){
+  seeIfZero() {
+    if (this.basketService.basket[this.i].orderQuantity == 0) {
       this.basketService.basket[this.i].orderQuantity = 1
       this.basketService.doTotal()
-      
     }
   }
 
-  deleteFromBasket(){
-    if(confirm('This Item Will Removed From Basket.')){
-      this.basketService.basket.splice(this.i, 1)
-    }
+  deleteFromBasket() {
+    // if(confirm('This Item Will Removed From Basket.')){
+    //   this.basketService.basket.splice(this.i, 1)
+    //   this.basketService.doTotal()
+    // }
+    this.dialogService.openDeleteOneDIalog().afterClosed().subscribe(
+      (result) => {
+        if (result == 'true') {
+          this.basketService.basket.splice(this.i, 1)
+          this.basketService.doTotal()
+        }
+      }
+    )
 
   }
 

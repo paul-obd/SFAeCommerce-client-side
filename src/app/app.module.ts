@@ -23,6 +23,14 @@ import { LoadingService } from './services/loading.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BasketComponent } from './basket/basket.component';
 import { BasketItemComponent } from './basket-item/basket-item.component';
+import { SortByComponent } from './sort-by/sort-by.component';
+import { ResponsiveService } from './services/responsive.service';
+import { ItemsTableComponent } from './items-table/items-table.component';
+import { TableItemComponent } from './table-item/table-item.component';
+import { FilterAttrComponent } from './filter-attr/filter-attr.component';
+import { FilterCheckboxComponent } from './filter-checkbox/filter-checkbox.component';
+import { DialogDeleteOneComponent } from './dialog-delete-one/dialog-delete-one.component';
+import { DialogDeleteAllComponent } from './dialog-delete-all/dialog-delete-all.component';
 
 
 @NgModule({
@@ -36,7 +44,14 @@ import { BasketItemComponent } from './basket-item/basket-item.component';
     HomeComponent,
     SearchComponent,
     BasketComponent,
-    BasketItemComponent
+    BasketItemComponent,
+    SortByComponent,
+    ItemsTableComponent,
+    TableItemComponent,
+    FilterAttrComponent,
+    FilterCheckboxComponent,
+    DialogDeleteOneComponent,
+    DialogDeleteAllComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +64,7 @@ import { BasketItemComponent } from './basket-item/basket-item.component';
     InfiniteScrollModule,
     BrowserAnimationsModule
   ],
-  providers: [OrderTotalService,ItemsService, ToolbarService, LoadingService, AttributeValueService],
+  providers: [OrderTotalService,ItemsService, ToolbarService, LoadingService, AttributeValueService, ResponsiveService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

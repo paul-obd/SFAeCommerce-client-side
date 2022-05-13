@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { SnackbarService } from './snackbar.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,14 +11,15 @@ export class OrderTotalService {
   total: number = this.itemPrice
   stock: number = 0
 
-  constructor() { }
+  constructor(private snackbar: SnackbarService) { }
 
   doTotal(){
     if (this.quantity < 0) {
-      alert("Quantity can't be a negative number")
+      this.snackbar.openSnackbar("Quantity can't be a negative number")
       
     }else if(this.quantity > this.stock){
-      alert("Such Quantity Not Availble in Stock")
+
+      this.snackbar.openSnackbar("Such Quantity Not Availble in Stock")
       this.quantity = 1
     }
     else{
@@ -44,8 +46,8 @@ export class OrderTotalService {
 
   decreaseQuantity(){
     if (this.quantity == 1) {
-      alert("Quantity can't be 0")
-      
+
+      this.snackbar.openSnackbar("Quantity can't be 0")
     }else{
       if (this.quantity == 0) {
         return;

@@ -1,0 +1,59 @@
+<div class="table">
+    <table>
+        <thead>
+            <tr class="tr">
+                <th></th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Add To basket</th>
+            </tr>
+        </thead>
+
+
+        <tr app-table-item *ngFor="let item of items; let i= index" [ngClass]="{'grey':  i % 2 === 0}" [item_code]="item.item_code" [i]="i"
+        [description]="item.description" [price]="item.price" [quantity]="item.quantity"
+        [folder_path]="item.folder_path" [base_path]="item.base_path"
+        [physical_file_name]="item.physical_file_name" [supplier]="item.supplier">
+        <!--     <td>
+                <div class="img">
+                    <img width="50" height="50" mat-card-image
+                        [src]="item.base_path+'/'+item.folder_path+'/'+item.physical_file_name" loading="lazy"
+                        alt="Photo of an item">
+                </div>
+            </td>
+            <td>{{item.description}}</td>
+            <td>
+                <div class="price">
+                    <h2>{{item.price | number }}</h2> <span class="lbp">LBP </span>
+                </div>
+            </td>
+            <td>
+                <div class="quantity">
+                    <mat-icon [ngClass]="{'disable-mat-icon': item.quantity<= 0}"
+                        (click)="decreaseQuantity(item.item_code)">remove
+                    </mat-icon>
+                    <input [disabled]="item.quantity<=0" (keypress)="validateNumber($event)"
+                        (keyup)="seeIfZero(item.item_code)" class="quantity-input" type="number"
+                        [(ngModel)]="item.orderQuantity">
+                    <mat-icon [ngClass]="{'disable-mat-icon': item.quantity<= 0}" (click)="addQuantity(item.item_code)">
+                        add</mat-icon>
+                </div>
+            </td>
+            <td class="btn-td">
+                <button color="primary" [disabled]="item.quantity<=0" mat-flat-button class="add-to-basket-btn"
+                    (click)="addToBasket(item.item_code)">Add
+                    To
+                    Basket</button>
+            </td> -->
+        
+            <!-- <app-table-item *ngFor="let item of items; let i= index" [item_code]="item.item_code" [i]="i"
+                [description]="item.description" [price]="item.price" [quantity]="item.quantity"
+                [folder_path]="item.folder_path" [base_path]="item.base_path"
+                [physical_file_name]="item.physical_file_name" [supplier]="item.supplier"></app-table-item> -->
+      
+        </tr>
+
+
+    </table>
+</div>

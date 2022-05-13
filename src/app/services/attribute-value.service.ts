@@ -12,7 +12,6 @@ export class AttributeValueService {
 
   attributeFilter: string;
   attributes: Attribute[] = [];
-  attributeValues: AttributeValue[] = []
 
   constructor(private http: HttpClient, private itemsService: ItemsService) {
 
@@ -24,12 +23,14 @@ export class AttributeValueService {
     return this.http.get<Attribute[]>(environment.apiUrl + 'Attributes/attributes')
   }
 
-  getAttrValuesWhereAttr(){
-    return this.http.get<AttributeValue[]>(environment.apiUrl+ 'Attributes/attribute-values/' +this.itemsService.filterAttr )
-  }
 
   getAttrValues(){
     return this.http.get<AttributeValue[]>(environment.apiUrl+ 'Attributes/attribute-values')
+  }
+
+
+  searchAttributeValues(attrCode: string, searchAttrValue: string){
+    return this.http.get<AttributeValue[]>(environment.apiUrl+ `Attributes/search-attribute-values?attrCode=${attrCode}&searchAttrValue=${searchAttrValue}`)
   }
 
 

@@ -1,26 +1,53 @@
-::ng-deep .mat-toolbar{
+:host ::ng-deep .mat-toolbar{
     margin-bottom: 2.5%;
     color: white;
     background-color: var(--blue);
 }
 
 
-::ng-deep .mat-icon{
+:host ::ng-deep .mat-icon{
     margin-right: 4% !important;
 }
 
- ::ng-deep .mat-progress-bar{
+:host ::ng-deep .mat-progress-bar{
     margin-top: -2.5%;
 }
 
+::ng-deep .mat-icon{
+   cursor: pointer;
+}
 
+.part-1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.part-2{
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+
+}
 
 .parts{
     display: flex;
     width: 100%;
     justify-content: space-between;
     align-items: center;
+    margin-right: 0% !important;
+    padding-right: 0% !important;
 
 }
 
+
+@media screen and (max-width: 480px) {
+    :host ::ng-deep .mat-toolbar-row, .mat-toolbar-single-row {
+        padding-right: 0% !important;
+    }
+    
+}
 

@@ -1,0 +1,123 @@
+img{
+    margin-top: 5%;
+    margin: 10%;
+}
+
+.quantity{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: row;
+}
+
+.quantity-input{
+    width: 25%;
+    background-color: transparent;
+    border: transparent;   
+ border: 0;
+    outline: 0;
+    
+
+}
+
+.quantity-input :active{
+    border: 0;
+    outline: 0;
+    border: transparent;
+    
+}
+
+:host ::ng-deep .mat-card-image:first-child {
+    margin-top: 5% !important;
+    margin-left: 5% !important;
+    margin: 16% !important;
+}
+
+:host ::ng-deep .mat-card-image {
+    width: auto !important;
+   
+    object-fit: contain;
+    margin: 0% !important;
+    display:  auto !important;
+    overflow: auto;
+}
+
+:host ::ng-deep .mat-icon{
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start !important;
+    background-color: var(--bgColor);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.price{
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+    align-items: flex-start;
+ 
+}
+
+h2{
+    font-weight: bold;
+    font-size: medium !important;
+    color: var(--blue);
+
+
+}
+
+
+.lbp{
+   
+    color: rgba(44, 67, 72, 0.911);
+    font-size: x-small;
+    font-weight: normal;
+    padding-inline-start: 2px;
+
+}
+
+
+th{
+    text-align: start !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.disable-mat-icon{
+    cursor: not-allowed;
+    pointer-events: none;
+    filter:opacity(0.5);
+}
+
+@media screen and (max-width: 500px) {
+    tr{
+        font-size: x-small;
+    }
+    h2{
+        font-weight: bold;
+        font-size: x-small !important;
+        color: var(--blue);
+    
+    
+    }
+    :host ::ng-deep .mat-flat-button{
+        width: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0% !important;
+        font-size: xx-small !important;
+    }
+ 
+}
