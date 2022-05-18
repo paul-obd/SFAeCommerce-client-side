@@ -86,10 +86,6 @@ export class BasketItemComponent implements OnInit {
   }
 
   deleteFromBasket() {
-    // if(confirm('This Item Will Removed From Basket.')){
-    //   this.basketService.basket.splice(this.i, 1)
-    //   this.basketService.doTotal()
-    // }
     this.dialogService.openDeleteOneDIalog().afterClosed().subscribe(
       (result) => {
         if (result == 'true') {

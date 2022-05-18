@@ -18,9 +18,6 @@ export class BasketComponent implements OnInit {
 
 
   deleteAllFromBasket(){
-    // if(confirm('All Items Will be Removed From Basket.')){
-    //   this.basketService.basket = []
-    // }
     this.dialogService.openDeleteAllDialog().afterClosed().subscribe(
       (result)=>{
         if(result == 'true'){

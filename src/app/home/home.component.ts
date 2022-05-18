@@ -30,6 +30,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
 
   }
+
+  doTotal(){
+    this.basketService.doTotal()
+  }
    
   goToBasket(){
       this.route.navigate(['/basket'])

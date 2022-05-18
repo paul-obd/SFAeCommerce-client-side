@@ -16,33 +16,20 @@ export class ItemsService {
   tableItems: Item[] = []
   
 
-  // filterAttr: string;
-  // filterAttrValue: string;
   filterScrollerTimes: number = 1;
   filterAttributeValuesCode: string[] = []
-  //filteredItems: Item[] = [];
+
 
 
   searchVar: string;
   searchScrolledTimes: number = 1;
- // searchItems: Item[] = []
+
   searchMode: boolean = false
   openSearch: boolean = false
 
 
   sortBy: string = "none"
 
-  // putItemInTable(){
-  //   console.log("labib")
-  //   this.tableItems = []
-  //   this.items.forEach(item => {
-  //     let newItem  = {
-  //       ...item,
-  //       orderQuantity: 1
-  //     }
-  //     this.tableItems.push(newItem)
-  //   });
-  // }
 
 
 
@@ -65,21 +52,7 @@ export class ItemsService {
     return this.http.get<Item[]>(environment.apiUrl+ `Items/search/${this.searchVar}?sortBy=${this.sortBy}&scrolledTimes=${this.searchScrolledTimes}&itemsNumber=${this.itemsNumber}`)
   }
 
-  // getFilteredItemsWithAttrAndAttrValue(){
-  //   return this.http.get<Item[]>(environment.apiUrl+ `Items/items-by-attribute-and-attribute-value/${this.filterAttr}/${this.filterAttrValue}?scrolledTimes=${this.filterScrollerTimes}&itemsNumber=${this.itemsNumber}`)
-  // }
 
-  // getFilteredItemsOnlyByAttr(){
-  //   return this.http.get<Item[]>(environment.apiUrl+ `Items/items-by-attribute/${this.filterAttr}?scrolledTimes=${this.filterScrollerTimes}&itemsNumber=${this.itemsNumber}`)
-  // }
-
-  // findAllFilteredItemsAndDelete(filterValue: any){
-  //   this.items.forEach(item=>{
-  //      if (this.items[0]) {
-         
-  //      }
-  //   })
-  // }
 
   
 }

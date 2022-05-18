@@ -80,7 +80,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
               this.itemsService.searchMode = true
               this.itemsService.items = []
               this.itemsService.items = res
-             // this.itemsService.putItemInTable()
+        
               this.itemsService.searchScrolledTimes = 2
 
               this.loadingService.loadSpinner = false
@@ -94,14 +94,6 @@ export class SearchComponent implements OnInit, AfterViewInit {
 
 
   getItemsWithPag() {
-
-    // if (this.itemsService.filterAttr != '' && this.itemsService.filterAttr != null && this.itemsService.filterAttr != undefined
-    //   && this.itemsService.filterAttrValue != '' && this.itemsService.filterAttrValue != null && this.itemsService.filterAttrValue != undefined) {
-    //   this.getFilteredItemsByAttrAndAttrValue()
-    // }
-    // else if (this.itemsService.filterAttr != '' && this.itemsService.filterAttr != null && this.itemsService.filterAttr != undefined) {
-    //   this.getFiltereditemsOnlyByAttr()
-    // }
     if (this.itemsService.filterAttributeValuesCode.length > 0) {
       this.getFilteredItemsOnlyByAttrValue()
     } else {
@@ -111,7 +103,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
         (res: Item[]) => {
           this.itemsService.items = []
           this.itemsService.items = res
-   //       this.itemsService.putItemInTable()
+   
           this.loadingService.loadSpinner = false
         }
       )
@@ -119,33 +111,6 @@ export class SearchComponent implements OnInit, AfterViewInit {
 
   }
 
-
-  // getFilteredItemsByAttrAndAttrValue() {
-
-  //   this.itemsService.filterScrollerTimes = 1
-  //   this.itemsService.getFilteredItemsWithAttrAndAttrValue().subscribe(
-  //     (res: Item[]) => {
-  //       this.itemsService.items = []
-  //       this.itemsService.items = res
-  //       this.itemsService.filterScrollerTimes = 2
-  //       this.loadingService.loadSpinner = false
-
-
-  //     }
-  //   )
-  // }
-
-  // getFiltereditemsOnlyByAttr() {
-  //   this.itemsService.filterScrollerTimes = 1
-  //   this.itemsService.getFilteredItemsOnlyByAttr().subscribe(
-  //     (res: Item[]) => {
-  //       this.itemsService.items = []
-  //       this.itemsService.items = res
-  //       this.itemsService.filterScrollerTimes = 2
-  //       this.loadingService.loadSpinner = false
-  //     }
-  //   )
-  // }
 
   getFilteredItemsOnlyByAttrValue() {
     this.itemsService.filterScrollerTimes = 1

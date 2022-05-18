@@ -54,7 +54,7 @@ export class FilterCheckboxComponent implements OnInit {
        this.itemsService.getItemsPagination().subscribe(
          (res: Item[])=>{
            this.itemsService.items = res
-    //       this.itemsService.putItemInTable()
+
            this.itemsService.scrolledTimes = 2
            this.loadingService.loadSpinner = false
 
@@ -67,7 +67,7 @@ export class FilterCheckboxComponent implements OnInit {
        this.itemsService.getFilteredItemsOnlyByAttrValue().subscribe(
         (res: Item[])=>{
           this.itemsService.items = res
-   //       this.itemsService.putItemInTable()
+
           this.itemsService.filterScrollerTimes = 2
           this.loadingService.loadSpinner = false
         }
