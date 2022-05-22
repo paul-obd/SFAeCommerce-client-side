@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BasketService } from '../services/basket.service';
 import { DialogService } from '../services/dialog.service';
 import { ResponsiveService } from '../services/responsive.service';
+import { ToolbarService } from '../services/toolbar.service';
 
 @Component({
   selector: 'app-basket',
@@ -10,7 +11,7 @@ import { ResponsiveService } from '../services/responsive.service';
 })
 export class BasketComponent implements OnInit {
 
-  constructor(public basketService: BasketService, public responsiveService: ResponsiveService, private dialogService: DialogService) { }
+  constructor(public toolbarService: ToolbarService,public basketService: BasketService, public responsiveService: ResponsiveService, private dialogService: DialogService) { }
 
   ngOnInit(): void {
     this.basketService.doTotal()

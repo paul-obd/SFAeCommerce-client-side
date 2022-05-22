@@ -1,11 +1,19 @@
-<mat-toolbar [class.mat-elevation-z5]="true">
+<mat-toolbar [class.mat-elevation-z5]="true" [dir]="toolbarService.lang == 'en'? 'ltr': 'rtl'">
     <div class="parts">
         <div class="part-1">
-            <mat-icon *ngIf="toolbarService.ouOfHome" (click)="back()">arrow_back</mat-icon>
-            <span>E-Commerce</span>
+            <mat-icon *ngIf="toolbarService.ouOfHome" (click)="back()"> {{toolbarService.lang == 'en'? 'arrow_back': 'arrow_forward'}}</mat-icon>
+            <span>{{'E-Commerce' | translate}}</span>
         </div>
 
         <div class="part-2">
+                <div (click)="selectLang.open()" class="lang">
+                    <mat-icon >language</mat-icon>
+                    <mat-select  #selectLang (selectionChange)="changeLangage()" [(ngModel)]="toolbarService.lang">
+                      <mat-option value="en"> Eng </mat-option>
+                      <mat-option value="ar"> عربي </mat-option>
+                    </mat-select>
+                </div>
+     
             <div class="full-screen">
                 <button *ngIf="full == false" (click)="openFullscreen()" mat-button>
                     <mat-icon>fullscreen</mat-icon>

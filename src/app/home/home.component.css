@@ -5,7 +5,8 @@
 
 .grid-btn{
     background-color: grey !important;
-    margin-left: 2%;
+    /* margin-left: 2%; */
+    margin-inline-start: 2%;
 }
 
 .filter-and-sort{
@@ -16,9 +17,12 @@
     flex-direction: row;
 }
 
-
+/* .filterAndSerch{
+    direction: rtl;
+} */
 .sortby{
-    margin-left: 1%;
+    /* margin-left: 1%; */
+    margin-inline-start: 1%;
 }
 
 .drop-list{
@@ -28,8 +32,11 @@
 
 .drop-list-quantity{
     font-weight: bold;
+    padding-inline-start: 3px;
 }
-
+.drop-list-total{
+   font-weight: bold;
+}
 app-filter{
     width: 50%;
 }
@@ -65,7 +72,6 @@ app-filter{
     font-size: x-small;
     font-weight: normal;
     padding-inline-start: 2px;
-
 }
 
 
@@ -87,7 +93,8 @@ app-filter{
 }
 
 .filter-open {
-    margin-left: 4% !important;
+    /* margin-left: 4% !important; */
+    margin-inline-start: 4% !important;
     width: 86% !important;
 
 }
@@ -109,11 +116,13 @@ app-filter{
 
 .mat-drawer-content-width {
     width: 100% !important;
+    /* direction: rtl; */
 }
 
 
 .items {
-    margin-left: 1%;
+    /* margin-left: 1%; */
+    margin-inline-start: 1%;
 
 }
 
@@ -129,8 +138,14 @@ app-filter{
     border: 1px solid var(--blue);
     border-radius: 6px;
     padding: 0.5em;
-    padding-left: 1em;
-    padding-right: 1em;
+    /* padding-left: 1em;
+    padding-right: 1em; */
+    padding-inline-start: 1em;
+    padding-inline-end: 1em;
+}
+
+.mat-mini-fab-custom{
+    background-color: var(--blue) !important;
 }
 
 @media screen and (max-width: 900px) {
@@ -139,7 +154,8 @@ app-filter{
     }
 
     .items {
-        margin-left: 0%;
+        /* margin-left: 0%; */
+        margin-inline-start: 0%;
     }
 
     :host ::ng-deep .mat-drawer-content {

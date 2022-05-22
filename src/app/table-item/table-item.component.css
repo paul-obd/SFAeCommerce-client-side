@@ -8,6 +8,7 @@ img{
     justify-content: start;
     align-items: center;
     flex-direction: row;
+ 
 }
 
 .quantity-input{
@@ -16,6 +17,7 @@ img{
     border: transparent;   
  border: 0;
     outline: 0;
+    text-align: center !important;
     
 
 }
@@ -78,6 +80,10 @@ h2{
 
 }
 
+td{
+    vertical-align: middle !important;
+    white-space: normal !important;
+}
 
 th{
     text-align: start !important;
@@ -100,9 +106,21 @@ input[type=number] {
     filter:opacity(0.5);
 }
 
+:host ::ng-deep .mat-card-image:first-child {
+    margin-top: 0% !important;
+    margin-left: 0% !important;
+    margin: 0% !important;
+}
+
+
+
 @media screen and (max-width: 500px) {
     tr{
         font-size: x-small;
+    }
+    td{
+        font-size: x-small;
+        white-space: normal !important;
     }
     h2{
         font-weight: bold;
@@ -111,13 +129,35 @@ input[type=number] {
     
     
     }
-    :host ::ng-deep .mat-flat-button{
-        width: 20%;
+    .quantity{
+        display: flex;
+        justify-content: space-between !important;
+        align-items: center;
+        flex-direction: row;
+     
+    }
+    
+    
+    :host ::ng-deep .dx-button{
+        
         display: flex;
         justify-content: center;
         align-items: center;
         padding: 0% !important;
         font-size: xx-small !important;
     }
+
+    :host ::ng-deep .mat-icon{
+        width: 10% !important;
+        background-color: transparent !important;
+    }
+
+
+
  
+}
+
+
+:host ::ng-deep .dx-datagrid-content .dx-datagrid-table .dx-row > td, .dx-datagrid-content .dx-datagrid-table .dx-row > tr > td {
+    vertical-align: middle !important;
 }

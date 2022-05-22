@@ -1,15 +1,15 @@
-<mat-form-field appearance="outline" >
-    <mat-label>Order By</mat-label>
+<mat-form-field  appearance="outline" >
+    <mat-label>{{'Order By' | translate}}</mat-label>
 
-        <mat-select [(ngModel)]="itemsService.sortBy" (selectionChange)="sortItems()">
+        <mat-select   [(ngModel)]="itemsService.sortBy" (selectionChange)="sortItems()">
             <mat-option value="none">
-                None
+                {{'None' | translate}} 
             </mat-option>
             <mat-option value="higherToLowerPrice">
-                Higher To Lower price
+                {{'Higher To Lower price' | translate}}
             </mat-option>
             <mat-option value="lowerToHigherPrice">
-                Lower To Higher price
+                {{'Lower To Higher price' | translate}}
             </mat-option>
         </mat-select>
 

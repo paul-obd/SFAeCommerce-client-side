@@ -28,4 +28,12 @@
   /* Font color */
 :host ::ng-deep input.mat-input-element {
     color: var(--blue);
+
   }
+:host ::ng-deep .ammount-input.mat-input-element {
+    
+    text-align: left !important;
+    direction: ltr !important;
+  }
+
+  

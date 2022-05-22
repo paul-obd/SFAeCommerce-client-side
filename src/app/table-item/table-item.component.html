@@ -23,9 +23,16 @@
             </div>
         </td>
         <td class="btn-td">
-            <button color="primary" [disabled]="quantity<=0" mat-flat-button class="add-to-basket-btn"
-                (click)="addToBasket()">Add
-                To
-                Basket</button>
+            <!-- <button color="primary" [disabled]="quantity<=0" mat-flat-button class="add-to-basket-btn"
+                (click)="addToBasket()">{{'Add To Basket' | translate}}</button> -->
+
+                <dx-button
+                [disabled]="quantity<=0"
+                stylingMode="contained"
+                [text]="'Add To Basket' | translate"
+                type="default"
+                (onClick)="addToBasket()"
+              >
+              </dx-button>
         </td>
   

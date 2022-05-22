@@ -3,6 +3,8 @@ import { ToolbarService } from '../services/toolbar.service';
 import { DOCUMENT, Location } from '@angular/common'
 import { LoadingService } from '../services/loading.service';
 import { ItemsService } from '../services/items.service';
+import { TranslateService } from "@ngx-translate/core";
+
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
@@ -15,9 +17,12 @@ export class ToolbarComponent implements OnInit {
 
   elem: any;
 
+  
+
   constructor(public toolbarService: ToolbarService, private location: Location, 
     public loadingService: LoadingService,
     public itemsService: ItemsService,
+    private translateService: TranslateService,
     @Inject(DOCUMENT) private document: any) { }
 
   ngOnInit(): void {
@@ -30,6 +35,12 @@ export class ToolbarComponent implements OnInit {
   openSearch(){
     this.itemsService.openSearch = true
   }
+
+  changeLangage() {
+
+    this.translateService.setDefaultLang(this.toolbarService.lang);
+    this.translateService.use(this.toolbarService.lang);
+ }
 
   openFullscreen() {
     if (this.elem.requestFullscreen) {

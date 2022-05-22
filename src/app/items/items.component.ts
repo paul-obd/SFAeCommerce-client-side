@@ -70,7 +70,7 @@ export class ItemsComponent implements OnInit, OnDestroy {
     
  
     if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 2) {
-      this.loadingService.paginationLoad = true
+      this.loadingService.paginationLoad == true
   
        
   

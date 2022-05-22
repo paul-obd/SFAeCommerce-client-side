@@ -4,6 +4,7 @@ import { Item } from '../models/Item.model';
 import { BasketService } from '../services/basket.service';
 import { ItemsService } from '../services/items.service';
 import { SnackbarService } from '../services/snackbar.service';
+import { ToolbarService } from '../services/toolbar.service';
 
 @Component({
   selector: 'app-items-table',
@@ -12,14 +13,14 @@ import { SnackbarService } from '../services/snackbar.service';
 })
 export class ItemsTableComponent implements OnInit {
 
-  public displayedColumns = ['img','name', 'price', 'quantity', 'add-to-basket'];
+  public displayedColumns = ['img', 'name', 'price', 'quantity', 'add-to-basket'];
 
-  constructor(public itemsService: ItemsService, private basketService: BasketService, private snackbar: SnackbarService) { }
+  constructor(public toolbarService: ToolbarService, public itemsService: ItemsService, private basketService: BasketService, private snackbar: SnackbarService) { }
 
   ngOnInit(): void {
   }
-  
-  
+
+
   items: Item[] = this.itemsService.items
 
 
@@ -38,86 +39,83 @@ export class ItemsTableComponent implements OnInit {
 
   }
 
-  seeIfZero(itemCode: string){
+  seeIfZero(itemCode: string) {
     let item = this.items.find(i => i.item_code == itemCode) as Item
-    if(item.orderQuantity == 0){
+    if (item.orderQuantity == 0) {
       item.orderQuantity = 1
     }
   }
 
 
 
-  addQuantity(itemCode: string){
+  addQuantity(itemCode: string) {
     let item = this.items.find(i => i.item_code == itemCode) as Item
-    if(item.orderQuantity.toString() == ''){
-     
+    if (item.orderQuantity.toString() == '') {
+
       item.orderQuantity = 0
     }
-    item.orderQuantity = Number.parseInt(item.orderQuantity.toString()) 
+    item.orderQuantity = Number.parseInt(item.orderQuantity.toString())
     item.orderQuantity += 1
-    
+
   }
 
-  decreaseQuantity(itemCode: string){
+  decreaseQuantity(itemCode: string) {
     let item = this.items.find(i => i.item_code == itemCode) as Item
     if (item.orderQuantity == 1) {
       this.snackbar.openSnackbar("Quantity can't be 0")
-      
-    }else{
+
+    } else {
       if (item.orderQuantity == 0 || item.orderQuantity == null) {
-  
+
         this.snackbar.openSnackbar("Quantity can't be < 0")
-        item.orderQuantity = 1 
+        item.orderQuantity = 1
         return;
       }
       item.orderQuantity -= 1
     }
-   
+
   }
 
 
-
-
-
-
-
-
-
-
-
-
-  addToBasket(itemCode: string){
+  addToBasket(itemCode: string) {
     let item = this.items.find(i => i.item_code == itemCode) as Item
-    if(item.orderQuantity == 0 || item.orderQuantity == null ){
-  
+    if (item.orderQuantity == 0 || item.orderQuantity == null) {
+
       this.snackbar.openSnackbar("Quantity can't be 0")
       item.orderQuantity = 1
     }
-    else{
-    let isItem = this.basketService.basket.find(i => i.description == item.description)
-    if (isItem != null) {
-      isItem.orderQuantity += isItem.orderQuantity
-    }else{
-      let newBasketItem = new BasketItem()
-      newBasketItem.item_code = item.item_code
-      newBasketItem.description = item.description
-      newBasketItem.price = item.price
-      newBasketItem.quantity = item.quantity
-      newBasketItem.folder_path = item.folder_path
-      newBasketItem.base_path = item.base_path
-      newBasketItem.physical_file_name = item.physical_file_name
-      newBasketItem.orderQuantity = item.orderQuantity
-      newBasketItem.supplier = item.supplier
+    else {
+      let isItem = this.basketService.basket.find(i => i.description == item.description)
+      if (isItem != null) {
+        isItem.orderQuantity += isItem.orderQuantity
+      } else {
+        let newBasketItem = new BasketItem()
+        newBasketItem.item_code = item.item_code
+        newBasketItem.description = item.description
+        newBasketItem.price = item.price
+        newBasketItem.quantity = item.quantity
+        newBasketItem.folder_path = item.folder_path
+        newBasketItem.base_path = item.base_path
+        newBasketItem.physical_file_name = item.physical_file_name
+        newBasketItem.orderQuantity = item.orderQuantity
+        newBasketItem.supplier = item.supplier
 
-      this.basketService.basket.push(newBasketItem)
+        this.basketService.basket.push(newBasketItem)
+      }
+
     }
-    
+
   }
 
 
-
-
-}
-
+  isItemDivisibleByTwo(name: string): boolean {
+    let i = this.items.findIndex(i => i.description == name)
+    if (i % 2 === 0) {
+      return true;
+    }
+    else {
+      return false
+    }
+  }
 
 }

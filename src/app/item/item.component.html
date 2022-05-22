@@ -6,8 +6,8 @@
 
             <div class="badge mat-elevation-z2" [ngClass]="quantity <= 0 ? 'red': 'green'">
 
-                <p *ngIf="quantity<=0">Sold-out</p>
-                <p *ngIf="quantity>0">In-Stock</p>
+                <p *ngIf="quantity<=0">{{'Sold-out' | translate}}</p>
+                <p *ngIf="quantity>0">{{'In-Stock' | translate}}</p>
 
             </div>
 
@@ -36,9 +36,7 @@
                 </div>
                 <div class="btnn">
                     <button  [disabled]="quantity<=0" mat-flat-button class="add-to-basket-btn"
-                        (click)="addToBasket()">Add
-                        To
-                        Basket</button>
+                        (click)="addToBasket()">{{'Add To Basket' | translate}}</button>
                 </div>
             </div>
         </div>

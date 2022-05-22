@@ -26,6 +26,7 @@ export class ItemComponent implements OnInit {
   constructor(private route: Router, private basketService: BasketService, private snackbar:  SnackbarService) { }
 
   ngOnInit(): void {
+    
   }
 
   goToDetails(){
@@ -89,6 +90,10 @@ export class ItemComponent implements OnInit {
   addToBasket(){
     if(this.orderQuantity == 0 || this.orderQuantity == null ){
       this.snackbar.openSnackbar("Quantity can't be zero")
+      this.orderQuantity = 1
+    }
+    else if(this.orderQuantity > this.quantity){
+      this.snackbar.openSnackbar("This Order Quantity is Not Available In Stock")
       this.orderQuantity = 1
     }
     else{

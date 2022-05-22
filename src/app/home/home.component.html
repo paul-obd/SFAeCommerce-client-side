@@ -1,10 +1,10 @@
 <div class="content">
-    <div class="filterAndSerch">
+    <div class="filterAndSerch" [dir]="toolbarService.lang == 'en'? 'ltr': 'rtl'">
         <div class="filter-and-sort">
 
-            <button mat-button (click)="toggleDrawer()">
+            <button  mat-button (click)="toggleDrawer()">
                 <mat-icon matPrefix>filter_list</mat-icon>
-                Filter
+                {{'Filter' | translate}}
             </button>
 
             <div class="sortby">
@@ -14,18 +14,20 @@
 
 
 
-        <button *ngIf="this.responsiveService.isMobile == true" (click)="goToBasket()" mat-mini-fab cdkDragBoundary=".mat-typography" cdkDrag
+        <button *ngIf="this.responsiveService.isMobile == true" (click)="goToBasket()" class="mat-mini-fab-custom" mat-mini-fab cdkDragBoundary=".mat-typography" cdkDrag
             mat-icon-button color="primary" aria-label="">
             <mat-icon [matBadge]="basketService.basket.length" matBadgeColor="warn">shopping_cart</mat-icon>
         </button>
-        <button *ngIf="this.responsiveService.isMobile == false" [matMenuTriggerFor]="aboveMenu" (click)="doTotal()" (dblclick)="goToBasket()" mat-mini-fab cdkDragBoundary=".mat-typography"
+        <button *ngIf="this.responsiveService.isMobile == false" [matMenuTriggerFor]="aboveMenu" class="mat-mini-fab-custom" (click)="doTotal()" (dblclick)="goToBasket()" mat-mini-fab cdkDragBoundary=".mat-typography"
             cdkDrag mat-icon-button color="primary" aria-label="">
             <mat-icon [matBadge]="basketService.basket.length" matBadgeColor="warn">shopping_cart</mat-icon>
         </button>
         <mat-menu #aboveMenu="matMenu"  yPosition="below">
+           
             <mat-list>
+                <mat-list-item  *ngIf="basketService.basket.length <= 0">{{'No Items Yet' | translate}}</mat-list-item >
                 <mat-list-item class="drop-list" *ngFor="let item of basketService.basket">{{item.description}}  <span class="drop-list-quantity">x{{item.orderQuantity}}</span></mat-list-item>
-                <mat-list-item class="drop-list-total">Total: <span class="total"> {{basketService.total | number}} <span class="lbp">LBP</span></span> </mat-list-item>
+                <mat-list-item *ngIf="basketService.basket.length > 0" class="drop-list-total">{{'Total' | translate}}: <span class="total"> {{basketService.total | number}} <span class="lbp">LBP</span></span> </mat-list-item>
             </mat-list>
           </mat-menu>
         <button class="grid-btn" mat-mini-fab (click)="toggleGrid()">
@@ -36,7 +38,7 @@
 
     <mat-divider></mat-divider>
     <div class="i-a-f">
-        <mat-drawer-container class="mat-drawer-content-width" autosize>
+        <mat-drawer-container  [dir]="toolbarService.lang == 'en'? 'ltr': 'rtl'" class="mat-drawer-content-width" autosize>
             <mat-drawer fixedInViewport="true" #drawer class="mat-elevation-z8" mode="side">
                 <app-filter></app-filter>
             </mat-drawer>

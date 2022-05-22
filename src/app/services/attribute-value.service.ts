@@ -17,8 +17,6 @@ export class AttributeValueService {
 
    }
 
-
-
   getAttributes(){
     return this.http.get<Attribute[]>(environment.apiUrl + 'Attributes/attributes')
   }

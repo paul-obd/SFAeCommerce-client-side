@@ -1,12 +1,12 @@
-<div class="table">
-    <table>
+<!-- <div class="table">
+    <table [dir]="toolbarService.lang == 'en'? 'ltr': 'rtl'">
         <thead>
             <tr class="tr">
                 <th></th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Add To basket</th>
+                <th>{{'Name' | translate}}</th>
+                <th>{{'Price' | translate}}</th>
+                <th>{{'Quantity' | translate}}</th>
+                <th>{{'Add To Basket' | translate}}</th>
             </tr>
         </thead>
 
@@ -20,4 +20,48 @@
 
 
     </table>
-</div>
+</div> -->
+
+<!-- <dx-data-grid
+  id="gridContainer"
+  [dataSource]="customers"
+  keyExpr="ID"
+  [columns]="['CompanyName', 'City', 'State', 'Phone', 'Fax']"
+  [showBorders]="true"
+>
+</dx-data-grid> -->
+
+<dx-data-grid id="gridContainer"
+[dataSource]="items"
+dataRowTemplate="dataRowTemplateName"
+[columnAutoWidth]="true"
+[showBorders]="false"
+
+
+>
+
+
+
+
+<dxi-column dataField="" caption=" "></dxi-column>
+<dxi-column dataField="description" [caption]="'Name' | translate"></dxi-column>
+<dxi-column  dataField="price" [caption]="'Price' | translate"></dxi-column>
+<dxi-column  dataField="quantity" [caption]="'Quantity' | translate"></dxi-column>
+<dxi-column   dataField="" [caption]="'Add To Basket' | translate"></dxi-column>
+
+<ng-container *dxTemplate="let item of 'dataRowTemplateName';">
+    <tr app-table-item [ngClass]="{'grey': isItemDivisibleByTwo(item.data.description) }" [item_code]="item.data.item_code" 
+    [description]="item.data.description" [price]="item.data.price" [quantity]="item.data.quantity"
+    [folder_path]="item.data.folder_path" [base_path]="item.data.base_path"
+    [physical_file_name]="item.data.physical_file_name" [supplier]="item.data.supplier">
+    
+    </tr>
+</ng-container>
+
+
+<dxo-load-panel [enabled]="false"></dxo-load-panel>
+<dxo-scrolling mode="infinite"></dxo-scrolling>
+<dxo-sorting mode="none"></dxo-sorting>
+
+
+</dx-data-grid>

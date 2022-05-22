@@ -26,6 +26,7 @@ export class TableItemComponent implements OnInit {
   constructor(private basketService: BasketService, private snackbar: SnackbarService) { }
 
   ngOnInit(): void {
+    console.log(this.i)
   }
 
   addQuantity(){
@@ -81,6 +82,10 @@ export class TableItemComponent implements OnInit {
     if(this.orderQuantity == 0 || this.orderQuantity == null ){
 
       this.snackbar.openSnackbar("Quantity can't be 0")
+      this.orderQuantity = 1
+    }
+    else if(this.orderQuantity > this.quantity){
+      this.snackbar.openSnackbar("This Order Quantity is Not Available In Stock")
       this.orderQuantity = 1
     }
     else{

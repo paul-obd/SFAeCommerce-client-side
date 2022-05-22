@@ -23,7 +23,7 @@ export class FilterCheckboxComponent implements OnInit {
 
 
   getOrRemoveItems(){
-    console.log(this.attrValue)
+   
     if ( this.itemsService.searchMode == true) {
       this.itemsService.openSearch = false
       this.itemsService.searchMode = false
@@ -33,7 +33,7 @@ export class FilterCheckboxComponent implements OnInit {
     if (this.checked ==  true ) {
      
         this.itemsService.filterAttributeValuesCode.push(this.attrValue.attributeValueCode)
-        console.log(this.itemsService.filterAttributeValuesCode)
+        
         this.itemsService.items = []
         this.itemsService.filterScrollerTimes = 1
         this.itemsService.getFilteredItemsOnlyByAttrValue().subscribe(

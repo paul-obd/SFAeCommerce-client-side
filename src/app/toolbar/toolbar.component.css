@@ -2,11 +2,13 @@
     margin-bottom: 2.5%;
     color: white;
     background-color: var(--blue);
+  
 }
 
-
+/*here*/
 :host ::ng-deep .mat-icon{
-    margin-right: 4% !important;
+    /* margin-right: 4% !important; */
+    margin-inline-end: 4% !important;
 }
 
 :host ::ng-deep .mat-progress-bar{
@@ -32,21 +34,44 @@
     flex-direction: row;
 
 }
-
+/*hon*/
 .parts{
     display: flex;
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    margin-right: 0% !important;
-    padding-right: 0% !important;
+    /* margin-right: 0% !important;
+    padding-right: 0% !important; */
+    margin-inline-end: 0% !important;
+    padding-inline-end: 0% !important;
 
 }
 
+.lang{
+    width: auto;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+}
 
+:host ::ng-deep .mat-option{
+    
+    z-index: 10000000000000;
+}
+
+::ng-deep .mat-progress-bar-fill::after {
+    background-color: var(--blue) !important;
+}
+
+::ng-deep .mat-progress-bar-buffer {
+    background: #e9f5ff !important;
+}
+
+/*here*/
 @media screen and (max-width: 480px) {
     :host ::ng-deep .mat-toolbar-row, .mat-toolbar-single-row {
-        padding-right: 0% !important;
+        /* padding-right: 0% !important; */
+        padding-inline-end: 0% !important;
     }
     
 }

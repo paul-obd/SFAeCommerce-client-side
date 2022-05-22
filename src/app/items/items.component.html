@@ -16,7 +16,7 @@
         <app-items-table *ngIf="itemsService.items.length > 0 && responsiveService.grid == 'table'" ></app-items-table>
 
         <div *ngIf="(itemsService.searchMode == true && itemsService.items.length == 0 && loadingService.loadSpinner == false)
-    || (itemsService.filterAttributeValuesCode && itemsService.items.length == 0)" class="h1">No Items Found</div>
+    || (itemsService.filterAttributeValuesCode && itemsService.items.length == 0)" class="h1">{{'No Items Found' | translate}}</div>
 
         <div *ngIf="loadingService.paginationLoad == true" class="pagination-load">
             <p>Loading more items</p>

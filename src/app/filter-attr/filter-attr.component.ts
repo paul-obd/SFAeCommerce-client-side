@@ -34,11 +34,11 @@ export class FilterAttrComponent implements OnInit {
 
     const keyups = fromEvent(this.searchBox.nativeElement, 'keyup');
 
-    // wait 1s between keyups to emit current value
+    // wait 0.5s between keyups to emit current value
     keyups
       .pipe(
 
-        debounceTime(1000)
+        debounceTime(500)
       )
       .subscribe(() => {
       

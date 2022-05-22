@@ -62,6 +62,7 @@ h2{
     border: transparent;   
     border: 0;
     outline: 0;
+    text-align: center !important;
 }
 
 .quantity-input :active{
