@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="content mat-elevation-z5 " [dir]="toolbarService.lang == 'en'? 'ltr': 'rtl'">
+       <h1> {{'Login' | translate}}</h1>
+        <form [formGroup]="loginFormGroup">
+            <mat-form-field appearance="outline">
+                <mat-label>{{'Enter Client Code' | translate}}</mat-label>
+                <input formControlName="clientCode" matInput>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>{{'Enter Password' | translate}}</mat-label>
+                <input formControlName="password" type="password" matInput>
+            </mat-form-field>
+            <dx-button
+            [disabled]="!loginFormGroup.valid || loadService.loadBar == true"
+            stylingMode="contained"
+            [text]="'Login' | translate"
+            type="default"
+            (onClick)="SubmitLoginForm()"
+          >
+          </dx-button>
+        </form>
+    </div>
+</div>

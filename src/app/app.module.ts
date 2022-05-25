@@ -7,12 +7,12 @@ import { MaterialModule } from './material/material.module';
 import { ItemsComponent } from './items/items.component';
 import { ItemComponent } from './item/item.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ItemDetailsComponent } from './item-details/item-details.component';
 import {OrderTotalService} from './services/order-total.service'
 import {ItemsService} from './services/items.service'
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToolbarService } from './services/toolbar.service';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { FilterComponent } from './filter/filter.component';
@@ -33,10 +33,15 @@ import { DialogDeleteOneComponent } from './dialog-delete-one/dialog-delete-one.
 import { DialogDeleteAllComponent } from './dialog-delete-all/dialog-delete-all.component';
 
 
-import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
+import { TranslateModule, TranslateLoader, TranslateService } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { HttpClient } from "@angular/common/http";
 import { DevExtremeModule, DxTemplateModule, DxDataGridModule } from 'devextreme-angular';
+import { LoginComponent } from './login/login.component';
+import { AuthService } from './services/auth.service';
+import { TokenInterceptor } from './interceptors/token.interceptor';
+import { IsLoggedInDialogComponent } from './is-logged-in-dialog/is-logged-in-dialog.component';
+import { DialogLogoutComponent } from './dialog-logout/dialog-logout.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +61,10 @@ import { DevExtremeModule, DxTemplateModule, DxDataGridModule } from 'devextreme
     FilterAttrComponent,
     FilterCheckboxComponent,
     DialogDeleteOneComponent,
-    DialogDeleteAllComponent
+    DialogDeleteAllComponent,
+    LoginComponent,
+    IsLoggedInDialogComponent,
+    DialogLogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -71,6 +79,7 @@ import { DevExtremeModule, DxTemplateModule, DxDataGridModule } from 'devextreme
     DevExtremeModule,
     DxTemplateModule,
     DxDataGridModule,
+    ReactiveFormsModule,
     TranslateModule.forRoot({
       loader: {
       provide: TranslateLoader,
@@ -80,7 +89,13 @@ import { DevExtremeModule, DxTemplateModule, DxDataGridModule } from 'devextreme
       }) ,
      
   ],
-  providers: [OrderTotalService,ItemsService, ToolbarService, LoadingService, AttributeValueService, ResponsiveService],
+  providers: [OrderTotalService,ItemsService, ToolbarService, LoadingService, AttributeValueService, ResponsiveService, AuthService, TranslateService,
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

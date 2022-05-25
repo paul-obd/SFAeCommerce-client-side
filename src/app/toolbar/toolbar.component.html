@@ -1,7 +1,7 @@
 <mat-toolbar [class.mat-elevation-z5]="true" [dir]="toolbarService.lang == 'en'? 'ltr': 'rtl'">
     <div class="parts">
         <div class="part-1">
-            <mat-icon *ngIf="toolbarService.ouOfHome" (click)="back()"> {{toolbarService.lang == 'en'? 'arrow_back': 'arrow_forward'}}</mat-icon>
+            <mat-icon *ngIf="toolbarService.ouOfHome && !authService.loggedIn()" (click)="back()"> {{toolbarService.lang == 'en'? 'arrow_back': 'arrow_forward'}}</mat-icon>
             <span>{{'E-Commerce' | translate}}</span>
         </div>
 
@@ -13,22 +13,33 @@
                       <mat-option value="ar"> عربي </mat-option>
                     </mat-select>
                 </div>
-     
-            <div class="full-screen">
+<!--      
+            <div class="full-screen" *ngIf="!authService.loggedIn()">
                 <button *ngIf="full == false" (click)="openFullscreen()" mat-button>
                     <mat-icon>fullscreen</mat-icon>
                 </button>
                 <button *ngIf="full == true" (click)="closeFullscreen()" mat-button>
                     <mat-icon>fullscreen_exit</mat-icon>
                 </button>
-            </div>
-            <div class="search-btn">
+            </div> -->
+            <div class="search-btn" *ngIf="!authService.loggedIn()">
                 <button (click)="openSearch()" *ngIf="itemsService.openSearch  == false" mat-button>
                     <mat-icon>search</mat-icon>
                 </button>
             </div>
             <div *ngIf="itemsService.openSearch  == true" class="search">
                 <app-search></app-search>
+            </div>
+            <div class="more" *ngIf="!authService.loggedIn()">
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu">
+                    <button (click)="logout()" mat-menu-item>
+                      <mat-icon>logout</mat-icon>
+                      <span>Log Out</span>
+                    </button>
+                  </mat-menu>
             </div>
         </div>
 

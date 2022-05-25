@@ -27,5 +27,32 @@
     "Name": "اسم",
     "Price": "السعر",
     "Quantity": "كمية",
-    "E-Commerce": "التجارة الإلكترونية"
+    "E-Commerce": "التجارة الإلكترونية",
+    "Login": "تسجيل الدخول",
+    "Enter Client Code": "أدخل رمز العميل",
+    "Enter Password": "أدخل كلمة المرور",
+    "Are You Sure You Want To Remove All Products From Basket":"هل أنت متأكد أنك تريد حذف جميع المنتجات من السلة",
+    "Are You Sure You Want To Remove This Products From Basket":"هل أنت متأكد أنك تريد حذف هذه المنتجات من السلة",
+    "Cancel": "إلغاء",
+    "Delete": "حذف",
+    "This Client Is Already Logged In On Another Machine, Do You Want To Force Logout The Other Machine And Login Here?":"تم تسجيل دخول هذا العميل بالفعل على جهاز آخر ، هل تريد فرض تسجيل الخروج من الجهاز الآخر وتسجيل الدخول هنا؟",
+    "Yes": "نعم",
+    "Quantity can't be 0": "لا يمكن أن تكون الكمية 0",
+    "Quantity can't be < 0": "لا يمكن أن تكون الكمية أصغر من 0",
+    "This Order Quantity is Not Available In Stock": "كمية الطلب هذه غير متوفرة في المخزون",
+    "Logged In Successfully!": "تم تسجيل الدخول بنجاح!",
+    "You've Been Forced To Logout": "لقد تم إجبارك على تسجيل الخروج",
+    "Internal Server Error Occured!": "حدث خطأ داخلي في الخادم!",
+    "You've Been Logged Out successfully": "لقد تم تسجيل خروجك بنجاح",
+    "Log Out": "تسجيل خروج",
+    "Are You Sure You Want To Log Out?": "هل أنت متأكد أنك تريد تسجيل الخروج؟"
+
+
+
+  
+
+
+
+
+
 }

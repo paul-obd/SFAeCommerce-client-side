@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { BasketItem } from '../models/basket-item.model';
 import { Item } from '../models/Item.model';
 import { BasketService } from '../services/basket.service';
@@ -15,7 +16,9 @@ export class ItemsTableComponent implements OnInit {
 
   public displayedColumns = ['img', 'name', 'price', 'quantity', 'add-to-basket'];
 
-  constructor(public toolbarService: ToolbarService, public itemsService: ItemsService, private basketService: BasketService, private snackbar: SnackbarService) { }
+  constructor(public toolbarService: ToolbarService, public itemsService: ItemsService, 
+    private basketService: BasketService, private snackbar: SnackbarService,
+    private translate: TranslateService) { }
 
   ngOnInit(): void {
   }
@@ -62,12 +65,15 @@ export class ItemsTableComponent implements OnInit {
   decreaseQuantity(itemCode: string) {
     let item = this.items.find(i => i.item_code == itemCode) as Item
     if (item.orderQuantity == 1) {
-      this.snackbar.openSnackbar("Quantity can't be 0")
+    
+        
+      this.translate.stream("Quantity can't be 0").subscribe(res => this.snackbar.openSnackbar(res))
 
     } else {
       if (item.orderQuantity == 0 || item.orderQuantity == null) {
 
-        this.snackbar.openSnackbar("Quantity can't be < 0")
+         
+      this.translate.stream("Quantity can't be < 0").subscribe(res => this.snackbar.openSnackbar(res))
         item.orderQuantity = 1
         return;
       }
@@ -80,8 +86,7 @@ export class ItemsTableComponent implements OnInit {
   addToBasket(itemCode: string) {
     let item = this.items.find(i => i.item_code == itemCode) as Item
     if (item.orderQuantity == 0 || item.orderQuantity == null) {
-
-      this.snackbar.openSnackbar("Quantity can't be 0")
+      this.translate.stream("Quantity can't be 0").subscribe(res => this.snackbar.openSnackbar(res))
       item.orderQuantity = 1
     }
     else {

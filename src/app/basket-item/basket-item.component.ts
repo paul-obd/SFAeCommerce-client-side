@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { BasketService } from '../services/basket.service';
 import { DialogService } from '../services/dialog.service';
 import { SnackbarService } from '../services/snackbar.service';
@@ -24,7 +25,8 @@ export class BasketItemComponent implements OnInit {
   imageIsLoaded: boolean = false
 
 
-  constructor(public basketService: BasketService, private dialogService: DialogService, private snackbar: SnackbarService) { }
+  constructor(public basketService: BasketService, private dialogService: DialogService, 
+    private snackbar: SnackbarService, private translate: TranslateService) { }
 
   ngOnInit(): void {
   }
@@ -47,11 +49,13 @@ export class BasketItemComponent implements OnInit {
 
     if (this.basketService.basket[this.i].orderQuantity == 1) {
 
-      this.snackbar.openSnackbar("Quantity can't be 0")
+  
+      this.translate.stream("Quantity can't be 0").subscribe(res => this.snackbar.openSnackbar(res))
 
     } else {
       if (this.basketService.basket[this.i].orderQuantity == 0 || this.basketService.basket[this.i].orderQuantity == null) {
-        this.snackbar.openSnackbar("Quantity can't be < 0")
+
+        this.translate.stream("Quantity can't be < 0").subscribe(res => this.snackbar.openSnackbar(res))
         this.basketService.basket[this.i].orderQuantity = 1
         return;
       }

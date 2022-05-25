@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { SnackbarService } from './snackbar.service';
 
 @Injectable({
@@ -11,15 +12,19 @@ export class OrderTotalService {
   total: number = this.itemPrice
   stock: number = 0
 
-  constructor(private snackbar: SnackbarService) { }
+  constructor(private snackbar: SnackbarService, private translate: TranslateService) { }
 
   doTotal(){
     if (this.quantity < 0) {
-      this.snackbar.openSnackbar("Quantity can't be a negative number")
+
+      this.translate.stream("Quantity can't be 0").subscribe(res => this.snackbar.openSnackbar(res))
+   
       
     }else if(this.quantity > this.stock){
 
-      this.snackbar.openSnackbar("Such Quantity Not Availble in Stock")
+     
+      this.translate.stream("This Order Quantity is Not Available In Stock").subscribe(res => this.snackbar.openSnackbar(res))
+   
       this.quantity = 1
     }
     else{
@@ -47,7 +52,10 @@ export class OrderTotalService {
   decreaseQuantity(){
     if (this.quantity == 1) {
 
-      this.snackbar.openSnackbar("Quantity can't be 0")
+      
+      this.translate.stream("Quantity can't be 0").subscribe(res => this.snackbar.openSnackbar(res))
+   
+      
     }else{
       if (this.quantity == 0) {
         return;

@@ -23,3 +23,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
     border: transparent;
   }
 
+  .red{
+    background-color: #8b0000;
+    color: white;
+}
+
+.green{
+    background-color: #296e01;
+    color: white;
+}
+
+.mat-simple-snackbar-action {
+  color: white !important;
+}

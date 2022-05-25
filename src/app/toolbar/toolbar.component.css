@@ -1,19 +1,22 @@
 :host ::ng-deep .mat-toolbar{
-    margin-bottom: 2.5%;
+    /* margin-bottom: 2.5%; */
     color: white;
     background-color: var(--blue);
   
 }
-
+::ng-deep .cdk-overlay-container {
+    position: fixed;
+    z-index: 10000000 !important;
+}
 /*here*/
 :host ::ng-deep .mat-icon{
     /* margin-right: 4% !important; */
     margin-inline-end: 4% !important;
 }
-
+/* 
 :host ::ng-deep .mat-progress-bar{
     margin-top: -2.5%;
-}
+} */
 
 ::ng-deep .mat-icon{
    cursor: pointer;
@@ -73,6 +76,7 @@
         /* padding-right: 0% !important; */
         padding-inline-end: 0% !important;
     }
+
     
 }
 

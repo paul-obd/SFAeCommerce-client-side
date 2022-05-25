@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { BasketItem } from '../models/basket-item.model';
 import { BasketService } from '../services/basket.service';
 import { SnackbarService } from '../services/snackbar.service';
@@ -23,7 +24,8 @@ export class ItemComponent implements OnInit {
   orderQuantity: number = 1;
   imageIsLoaded: boolean = false
 
-  constructor(private route: Router, private basketService: BasketService, private snackbar:  SnackbarService) { }
+  constructor(private route: Router, private basketService: BasketService, 
+    private snackbar:  SnackbarService, private translate: TranslateService) { }
 
   ngOnInit(): void {
     
@@ -50,13 +52,14 @@ export class ItemComponent implements OnInit {
 
   decreaseQuantity(){
     if (this.orderQuantity == 1) {
-
-      this.snackbar.openSnackbar("Quantity can't be 0")
+      this.translate.stream("Quantity can't be 0").subscribe(res => this.snackbar.openSnackbar(res))
+   
       
     }else{
       if (this.orderQuantity == 0 || this.orderQuantity == null) {
 
-        this.snackbar.openSnackbar("Quantity can't be < 0")
+       
+        this.translate.stream("Quantity can't be < 0").subscribe(res => this.snackbar.openSnackbar(res))
         this.orderQuantity = 1 
         return;
       }
@@ -89,11 +92,13 @@ export class ItemComponent implements OnInit {
 
   addToBasket(){
     if(this.orderQuantity == 0 || this.orderQuantity == null ){
-      this.snackbar.openSnackbar("Quantity can't be zero")
+      
+      this.translate.stream("Quantity can't be 0").subscribe(res => this.snackbar.openSnackbar(res))
       this.orderQuantity = 1
     }
     else if(this.orderQuantity > this.quantity){
-      this.snackbar.openSnackbar("This Order Quantity is Not Available In Stock")
+      
+      this.translate.stream("This Order Quantity is Not Available In Stock").subscribe(res => this.snackbar.openSnackbar(res))
       this.orderQuantity = 1
     }
     else{

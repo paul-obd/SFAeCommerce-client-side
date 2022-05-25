@@ -26,5 +26,25 @@
     "Sub Total": "Sub Total",
     "Name": "Name",
     "Price": "Price",
-    "Quantity": "Quantity"
+    "Quantity": "Quantity",
+    "Login": "Login",
+    "Enter Client Code": "Enter Client Code",
+    "Enter Password": "Enter Password",
+    "Are You Sure You Want To Remove All Products From Basket":"Are You Sure You Want To Remove All Products From Basket",
+    "Are You Sure You Want To Remove This Products From Basket": "Are You Sure You Want To Remove This Products From Basket",
+    "Cancel":"Cancel",
+    "Delete": "Delete",
+    "This Client Is Already Logged In On Another Machine, Do You Want To Force Logout The Other Machine And Login Here?":"This Client Is Already Logged In On Another Machine, Do You Want To Force Logout The Other Machine And Login Here?",
+    "Yes":"Yes",
+    "Quantity can't be 0": "Quantity can't be 0",
+    "Quantity can't be < 0": "Quantity can't be < 0",
+    "This Order Quantity is Not Available In Stock": "This Order Quantity is Not Available In Stock",
+    "Logged In Successfully!": "Logged In Successfully!",
+    "You've Been Forced To Logout": "You've Been Forced To Logout",
+    "Internal Server Error Occured!": "Internal Server Error Occured!",
+    "You've Been Logged Out successfully": "You've Been Logged Out successfully",
+    "Log Out": "Log Out",
+    "Are You Sure You Want To Log Out?": "Are You Sure You Want To Log Out?"
+
+
 }

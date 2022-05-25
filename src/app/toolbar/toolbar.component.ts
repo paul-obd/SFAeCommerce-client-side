@@ -4,6 +4,10 @@ import { DOCUMENT, Location } from '@angular/common'
 import { LoadingService } from '../services/loading.service';
 import { ItemsService } from '../services/items.service';
 import { TranslateService } from "@ngx-translate/core";
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
+import { SnackbarService } from '../services/snackbar.service';
+import { DialogService } from '../services/dialog.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -17,22 +21,26 @@ export class ToolbarComponent implements OnInit {
 
   elem: any;
 
-  
 
-  constructor(public toolbarService: ToolbarService, private location: Location, 
+
+  constructor(public toolbarService: ToolbarService, private location: Location,
     public loadingService: LoadingService,
     public itemsService: ItemsService,
     private translateService: TranslateService,
+    public authService: AuthService,
+    private route: Router,
+    private snackbar: SnackbarService,
+    private dialogService: DialogService,
     @Inject(DOCUMENT) private document: any) { }
 
   ngOnInit(): void {
     this.elem = this.document.documentElement;
   }
 
-  back(){
+  back() {
     this.location.back()
   }
-  openSearch(){
+  openSearch() {
     this.itemsService.openSearch = true
   }
 
@@ -40,7 +48,7 @@ export class ToolbarComponent implements OnInit {
 
     this.translateService.setDefaultLang(this.toolbarService.lang);
     this.translateService.use(this.toolbarService.lang);
- }
+  }
 
   openFullscreen() {
     if (this.elem.requestFullscreen) {
@@ -58,8 +66,8 @@ export class ToolbarComponent implements OnInit {
     this.full = true
   }
 
-   /* Close fullscreen */
-   closeFullscreen() {
+  /* Close fullscreen */
+  closeFullscreen() {
     if (this.document.exitFullscreen) {
       this.document.exitFullscreen();
     } else if (this.document.mozCancelFullScreen) {
@@ -73,5 +81,26 @@ export class ToolbarComponent implements OnInit {
       this.document.msExitFullscreen();
     }
     this.full = false
+  }
+
+
+  logout() {
+    this.dialogService.opensLogOutDialog().afterClosed().subscribe(
+      (result) => {
+        if (result == 'true') {
+          this.loadingService.loadBar = true
+          this.authService.logoutReq().subscribe(
+            (res: any) => {
+              this.authService.logOutClearStorage();
+              this.route.navigate(['/login'])
+              this.translateService.stream("You've Been Logged Out successfully").subscribe(res => this.snackbar.openSuccessSnackBar(res))
+              this.loadingService.loadBar = false
+            }
+          )
+        }
+      }
+    )
+
+
   }
 }
