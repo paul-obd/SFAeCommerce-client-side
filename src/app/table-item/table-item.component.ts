@@ -25,7 +25,7 @@ export class TableItemComponent implements OnInit {
   orderQuantity: number = 1
 
   constructor(private basketService: BasketService, private snackbar: SnackbarService, private translate: TranslateService) { }
-
+ 
   ngOnInit(): void {
   
   }

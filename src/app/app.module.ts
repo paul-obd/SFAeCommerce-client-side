@@ -36,12 +36,23 @@ import { DialogDeleteAllComponent } from './dialog-delete-all/dialog-delete-all.
 import { TranslateModule, TranslateLoader, TranslateService } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { HttpClient } from "@angular/common/http";
-import { DevExtremeModule, DxTemplateModule, DxDataGridModule } from 'devextreme-angular';
+import { DevExtremeModule, DxTemplateModule, DxDataGridModule, DxGalleryModule } from 'devextreme-angular';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './services/auth.service';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { IsLoggedInDialogComponent } from './is-logged-in-dialog/is-logged-in-dialog.component';
 import { DialogLogoutComponent } from './dialog-logout/dialog-logout.component';
+
+import { AngularFireMessagingModule } from '@angular/fire/compat/messaging';
+import { AngularFireDatabaseModule } from"@angular/fire/compat/database";
+import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+import { AngularFireModule } from "@angular/fire/compat";
+import { environment } from 'src/environments/environment';
+import { MessagingService } from './services/messaging.service';
+import { CarouselComponent } from './carousel/carousel.component';
+import { CompanyInfoComponent } from './company-info/company-info.component';
+import { CarouselService } from './services/carousel.service';
+import { CompanyInfoService } from './services/company-info.service';
 
 @NgModule({
   declarations: [
@@ -64,7 +75,9 @@ import { DialogLogoutComponent } from './dialog-logout/dialog-logout.component';
     DialogDeleteAllComponent,
     LoginComponent,
     IsLoggedInDialogComponent,
-    DialogLogoutComponent
+    DialogLogoutComponent,
+    CarouselComponent,
+    CompanyInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +92,12 @@ import { DialogLogoutComponent } from './dialog-logout/dialog-logout.component';
     DevExtremeModule,
     DxTemplateModule,
     DxDataGridModule,
+    DxGalleryModule,
     ReactiveFormsModule,
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    AngularFireMessagingModule,
+    AngularFireModule.initializeApp(environment.firebase),
     TranslateModule.forRoot({
       loader: {
       provide: TranslateLoader,
@@ -89,7 +107,7 @@ import { DialogLogoutComponent } from './dialog-logout/dialog-logout.component';
       }) ,
      
   ],
-  providers: [OrderTotalService,ItemsService, ToolbarService, LoadingService, AttributeValueService, ResponsiveService, AuthService, TranslateService,
+  providers: [CompanyInfoService,CarouselService,OrderTotalService,MessagingService,ItemsService, ToolbarService, LoadingService, AttributeValueService, ResponsiveService, AuthService, TranslateService,
   {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,

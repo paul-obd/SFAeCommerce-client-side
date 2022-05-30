@@ -1,0 +1,24 @@
+::ng-deep .dx-gallery{
+    width: 100% !important;
+    object-fit: contain !important;
+}
+
+::ng-deep .dx-gallery-item-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    /* align-self: flex-start;
+    object-fit: fill !important;
+    flex-shrink: 0;
+    height: auto;
+    margin: 0 !important; */
+}
+
+
+::ng-deep .dx-gallery-item{
+    object-fit: contain !important;
+}
+
+/* ::ng-deep .dx-gallery-item{
+    object-fit: fill  !important;
+} */

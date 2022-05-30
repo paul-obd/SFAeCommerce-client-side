@@ -15,7 +15,7 @@ export class AttributeValueService {
 
   constructor(private http: HttpClient, private itemsService: ItemsService) {
 
-   }
+  }
 
   getAttributes(){
     return this.http.get<Attribute[]>(environment.apiUrl + 'Attributes/attributes')

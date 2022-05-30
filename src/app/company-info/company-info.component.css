@@ -1,0 +1,168 @@
+.content{
+
+    margin-top: 4%;
+    width: 100%;
+  
+    padding-top: 2%;
+    padding-bottom: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--blue);
+    color: white;
+}
+
+.name-and-contacts-medias{
+    width: 90%;
+   display: flex;
+   justify-content: space-between;
+   align-items: flex-start;
+   flex-direction: row;
+}
+
+.name{
+    width: 24%;
+}
+
+
+.location-wrapper{
+
+    width: 47%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.location{
+
+    width: 100%;
+ 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.map{
+    width: 90%;
+}
+
+
+.company-address{
+    width: 45%;
+    margin-inline-end: -5%;
+
+}
+
+.medias{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.title{
+    font-weight: bold;
+}
+
+
+i{
+    font-size:30px;color:white
+}
+
+.location-address{
+    width: 90%;
+    
+    margin-top: 5%;
+    display: flex;
+    justify-content: start;
+ align-items: flex-start;
+}
+
+
+
+
+@media screen and (max-width: 900px) {
+    .name-and-contacts-medias{
+        width: 90%;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       flex-direction: column;
+    }
+    .location{
+    
+        width: 90%;
+        margin-top: 4%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .map{
+        
+        width: 100%;
+    }
+    .name{
+        margin-top: 4%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contact-us{
+        margin-top: 4%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+
+    .connect-with-us{
+        margin-top: 4%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .medias{
+        width: 50%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .company-address{
+        margin-top: 4%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .location-address{
+        margin-top: 4%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .location-wrapper{
+        margin-top: 4%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+}

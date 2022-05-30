@@ -3,6 +3,12 @@
     margin-right: 2%;
 }
 
+.carousel{
+    width: 100%  !important;
+    margin-top: -2.5% !important;
+    margin-bottom: 2%;
+}
+
 .grid-btn{
     background-color: grey !important;
     /* margin-left: 2%; */
@@ -133,6 +139,8 @@ app-filter{
     justify-content: end;
     align-items: center;
 }
+
+
 
 :host ::ng-deep .mat-button {
     border: 1px solid var(--blue);

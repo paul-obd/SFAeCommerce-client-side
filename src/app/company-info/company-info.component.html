@@ -1,0 +1,93 @@
+<div class="content">
+
+    <div class="name-and-contacts-medias">
+        <!-- name -->
+        <div class="name start">
+            <h1 class="title">About Us:</h1>
+            <h2>{{companyInfo.companyName}}</h2>
+            <p>Description is going to be here so please put the description here and please i hoper
+                you put the description her so please pu it here and thank you thank me one two two threw to me.
+            </p>
+        </div>
+
+
+
+        <!-- contacts -->
+        <div class="contact-us start">
+            <h1 class="title">Contact Us:</h1>
+            <div class="phone">
+                <p class="phone-number" *ngIf="companyInfo.phone1 != null || companyInfo.phone1 != undefined">
+                    <mat-icon matPrefix>call</mat-icon> +961 {{companyInfo.phone1}}
+                </p>
+                <p class="phone-number" *ngIf="companyInfo.phone2 != null || companyInfo.phone2 != undefined">
+                    <mat-icon matPrefix>call</mat-icon> +961 {{companyInfo.phone2}}
+                </p>
+            </div>
+            <div class="email">
+                <p class="email-p">
+                    <mat-icon matPrefix>mail</mat-icon> {{companyInfo.email}}
+                </p>
+            </div>
+
+        </div>
+
+        <!-- medias -->
+        <div class="connect-with-us start">
+            <h1 class="title">Connect With Us:</h1>
+            <div class="medias">
+                <div class="facebook">
+                    <a [href]="companyInfo.facebookLink" target="_blank">
+                        <i class="fa fa-facebook-f"></i>
+                    </a>
+                </div>
+                <div class="insta">
+                    <a [href]="companyInfo.instagramLink" target="_blank">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                </div>
+                <div class="linkedin">
+                    <a [href]="companyInfo.linkedinLink" target="_blank">
+                        <i class="fa fa-linkedin"></i>
+                    </a>
+                </div>
+                <div class="twitter">
+                    <a [href]="companyInfo.twitterLink" target="_blank">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="location-address">
+
+        <div class="location-wrapper">
+            <!-- locaion -->
+            <h1 class="title">Location:</h1>
+            <div class="location">
+
+                <div class="map">
+                    <dx-map #map [zoom]="14" [height]="400" width="100%" provider="bing" [markers]="markers"
+                        type="satellite"
+                        markerIconSrc="https://js.devexpress.com/Demos/RealtorApp/images/map-marker.png">
+                    </dx-map>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="address">
+            <div class="company-address">
+                <h1 class="title">Address:</h1>
+                <h2>{{companyInfo.location}}</h2>
+            </div>
+        </div>
+
+    </div>
+
+</div>
